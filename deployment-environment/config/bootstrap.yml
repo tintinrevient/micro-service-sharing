@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: demo-service
+  profiles:
+    active: "@spring.profiles.active@"
+
+---
+spring:
+  profiles: docker
+
+
+---
+spring:
+  profiles: local
