@@ -62,7 +62,7 @@ http.authorizeRequests()
 .anyRequest().authenticated()
 ```
 
-一旦加入上面依赖和配置，重新启动Spring Boot应用，访问如下路径"/actuator/prometheus"，比如http://localhost:9091/actuator/prometheus，便可以看到如下符合Prometheus text format的metrics：
+一旦加入上面依赖和配置，重新启动Spring Boot应用，访问如下路径"/actuator/prometheus"，比如http://localhost:9091/actuator/prometheus ，便可以看到如下符合Prometheus text format的metrics：
 
 ```
 http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS",status="200",uri="/actuator/prometheus",} 0.009496413
