@@ -4,7 +4,7 @@
 
 Prometheus + Grafana是比较通用的解决方案，在Spring Boot 2.0以后metrics默认与Micrometer集成，而Micrometer有关于Prometheus的MeterRegistry规范的实现，因此我们通过Micrometer这个桥梁能将Spring Boot的监控数据与Prometheus展示出来。然后通过Grafana提供的UI界面进行数据的实时展示。
 
-![infra-prometheus-grafana](./infra-prometheus-grafana.png)
+![infra-prometheus-grafana](./pix/infra-prometheus-grafana.png)
 
 Prometheus从对应的节点地址获取度量数据并在本地存储所有数据样例根据相关规则将现有数据聚合并记录新的时间序列（或者生成警报）。可以使用Grafana或其他API消费者来可视化收集的数据。
 
@@ -74,7 +74,7 @@ http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS"
 
 在Variables下拉菜单中，选中一个存在的Instance和HikariCP-Pool，如下：
 
-![config](./config.png)
+![config](./pix/config.png)
 
 最后Spring Boot Statistics展示如下：
 
