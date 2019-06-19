@@ -49,7 +49,7 @@ cd /usr/local/.../rabbitmq/3.7.12/sbin
 rabbitmq-plugins enable prometheus_rabbitmq_exporter
 ```
 
-最后重启RabbitMQ，访问http://localhost:15672/api/metrics，便可以看到所有export的RabbitMQ metrics，比如如下Prometheus text format的格式：
+最后重启RabbitMQ，访问http://localhost:15672/api/metrics ，便可以看到所有export的RabbitMQ metrics，比如如下Prometheus text format的格式：
 
 ```
 rabbitmq_core_node_uptime{node="rabbit@localhost"} 4144085
