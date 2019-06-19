@@ -97,7 +97,7 @@ brew services start grafana
 
 ![grafana-1](./grafana-1.png)
 
-最后在http://localhost:3000/dashboard/import中点击"Upload .json File"，下载并选择此repository里的JSON文件 - RabbitMQAPIMetrics.json，选择"Prometheus"为数据源。当点击"Load"时，可以看到如下监控面板：
+最后在http://localhost:3000/dashboard/import 中点击"Upload .json File"，下载并选择此repository里的JSON文件 - RabbitMQAPIMetrics.json，选择"Prometheus"为数据源。当点击"Load"时，可以看到如下监控面板：
 
 ![grafana-2](./grafana-2.png)
 
