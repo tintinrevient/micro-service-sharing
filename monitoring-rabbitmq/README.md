@@ -31,7 +31,7 @@ curl -i -u guest:guest http://localhost:15672/api/aliveness-test/%2F
 
 ### 第二步：RabbitMQ集成Prometheus
 
-先从后面地址下载如下plugins：https://github.com/deadtrickster/prometheus_rabbitmq_exporter/releases：
+先从后面地址下载如下plugins：https://github.com/deadtrickster/prometheus_rabbitmq_exporter/releases
 
 * accept-0.3.5.ez
 * prometheus-4.3.0.ez
@@ -49,7 +49,7 @@ cd /usr/local/.../rabbitmq/3.7.12/sbin
 rabbitmq-plugins enable prometheus_rabbitmq_exporter
 ```
 
-最后重启RabbitMQ，访问http://localhost:15672/api/metrics便可以看到所有export的RabbitMQ metrics，比如如下Prometheus text format的格式：
+最后重启RabbitMQ，访问http://localhost:15672/api/metrics，便可以看到所有export的RabbitMQ metrics，比如如下Prometheus text format的格式：
 
 ```
 rabbitmq_core_node_uptime{node="rabbit@localhost"} 4144085
