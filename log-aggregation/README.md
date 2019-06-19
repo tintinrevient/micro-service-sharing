@@ -13,11 +13,11 @@ The technical stack we use to retrieve and aggregate the log files is below, and
 
 The function of each application is as below:
 
-![ELK_architecture](./ELK_architecture.png)
+![ELK_architecture](./pix/ELK_architecture.png)
 
 You can download the above applications from https://www.elastic.co/downloads/
 
-![download](./download.png)
+![download](./pix/download.png)
 
 To run the above applications, the command lines are as below, and you need to execute the commands in their installed root folder:
 
@@ -138,12 +138,12 @@ Open Kibana at http://localhost:5601 and create a new index for the application 
 
 1. Choose: Management->index Patterns->Create Index Pattern, and search for "app-*"
 
-![kibana-1](./kibana-1.png)
+![kibana-1](./pix/kibana-1.png)
 
 2. Choose: "@timestamp" and click "Create index pattern"
 
-![kibana-2](./kibana-2.png)
+![kibana-2](./pix/kibana-2.png)
 
 Finally Kibana dashboard will display the aggregated logs from all the services! And you can customize the information by configuring your wanted fields.
 
-![kibana-all](./kibana-all.png)
+![kibana-all](./pix/kibana-all.png)

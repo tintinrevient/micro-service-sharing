@@ -14,7 +14,7 @@ Spring Cloud Sleuth是一个distributed tracing的工具，可以在每个servic
 * 同一个请求的Trace Id相同
 * 同一个请求在不同service上的Span Id不同
 
-![trace-id](./trace-id.png)
+![trace-id](./pix/trace-id.png)
 
 在Spring Boot项目中，引入Sleuth，只需做如下两步：
 
@@ -53,7 +53,7 @@ logging:
 
 重新启动项目，既可以看到如下日志:
 
-![log](./log.png)
+![log](./pix/log.png)
 
 最后执行如下命令，下载并启动Zipkin:
 
@@ -67,7 +67,7 @@ java -jar zipkin.jar
 * spring-boot-config-logging，总共执行了115.781毫秒。
 * 其中，spring-boot-config-logging执行了远程请求服务spring-boot-sample，spring-boot-sample执行了49.219毫秒。
 
-![zipkin](./zipkin.png)
+![zipkin](./pix/zipkin.png)
 
 ### Reference
 * https://github.com/spring-cloud/spring-cloud-sleuth

@@ -8,16 +8,16 @@ After starting the Hystrix dashboard, you can type in your monitored service's h
 
 The result will display in the Hystrix dashboard in real-time:
 
-![hystrix](./hystrix.png)
+![hystrix](./pix/hystrix.png)
 
 If the downstream service does not respond, the dashboard can track the network error in real-time:
 
-![hystrix-fallback](./hystrix-fallback.png)
+![hystrix-fallback](./pix/hystrix-fallback.png)
 
 Turbine is used to aggregate the stream to track multiple services.
 
-![turbine](./turbine.png)
+![turbine](./pix/turbine.png)
 
 After starting the Turbine server, you can monitor the performance in the Hystrix dashboard with the sample URL as: http://localhost:8989/turbine.stream?cluster=CLIENT-SERVICE
 
-![turbine-stream](./turbine-stream.png)
+![turbine-stream](./pix/turbine-stream.png)
