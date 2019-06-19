@@ -1,0 +1,91 @@
+version: '2.1'
+services:
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - 7687:7687
+      - 7474:7474
+    volumes:
+      - ./config/neo4j/data:/data
+      - ./config/neo4j/logs:/logs
+  #    networks:
+  #      - webnet
+
+  nginx:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+  #    networks:
+  #      - webnet
+
+  config-server:
+    image: registry-hostname:port/hncy/config-server
+    restart: always
+    depends_on:
+      - nginx
+    environment:
+      VIRTUAL_HOST: config.hncy.com
+  #    networks:
+  #      - webnet
+
+  eureka-server:
+    image: registry-hostname:port/hncy/eureka-server
+    restart: always
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      CONFIG_SERVER_USERNAME: admin
+      CONFIG_SERVER_PASSWORD: admin
+    ports:
+      - 8761:8761
+  #    networks:
+  #      - webnet
+
+  authorization-server:
+    image: registry-hostname:port/hncy/authorization-server
+    restart: always
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      VIRTUAL_HOST: auth.hncy.com
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: secret
+      CONFIG_SERVER_USERNAME: admin
+      CONFIG_SERVER_PASSWORD: admin
+  #    networks:
+  #      - webnet
+
+  platform-resource-server:
+    image: registry-hostname:port/hncy/platform-resource-server
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: secret
+      CONFIG_SERVER_USERNAME: admin
+      CONFIG_SERVER_PASSWORD: admin
+  #    networks:
+  #      - webnet
+
+  platform-service:
+    image: registry-hostname:port/hncy/platform-service
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      VIRTUAL_HOST: platform.hncy.com
+      CLIENT_ID: user
+      CLIENT_SECRET: secret
+      CONFIG_SERVER_USERNAME: admin
+      CONFIG_SERVER_PASSWORD: admin
+#    networks:
+#      - webnet
+#
+#networks:
+#  webnet:
+#    external: true
