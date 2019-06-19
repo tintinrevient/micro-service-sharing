@@ -31,7 +31,7 @@ curl -i -u guest:guest http://localhost:15672/api/aliveness-test/%2F
 
 ### 第二步：RabbitMQ集成Prometheus
 
-先从https://github.com/deadtrickster/prometheus_rabbitmq_exporter/releases下载如下plugins：
+先从后面地址下载如下plugins：https://github.com/deadtrickster/prometheus_rabbitmq_exporter/releases：
 
 * accept-0.3.5.ez
 * prometheus-4.3.0.ez
