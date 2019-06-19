@@ -62,7 +62,7 @@ curl -sSL https://zipkin.io/quickstart.sh | bash -s
 java -jar zipkin.jar
 ```
 
-我们这时访问Zipkin默认地址 - http://localhost:9411/，便可以看到如下信息：
+我们这时访问Zipkin默认地址 - http://localhost:9411/
 
 * spring-boot-config-logging，总共执行了115.781毫秒。
 * 其中，spring-boot-config-logging执行了远程请求服务spring-boot-sample，spring-boot-sample执行了49.219毫秒。
