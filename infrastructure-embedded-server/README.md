@@ -95,3 +95,7 @@ server:
 此时向服务器发送请求，可以看到response的协议如下：
 
 ![http2](./pix/http2.png)
+
+### Reference
+
+* https://docs.spring.io/spring-boot/docs/current/reference/html/howto-embedded-web-servers.html
