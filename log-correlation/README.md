@@ -69,3 +69,7 @@ java -jar zipkin.jar
 
 ![zipkin](./zipkin.png)
 
+### Reference
+* https://github.com/spring-cloud/spring-cloud-sleuth
+* https://spring.io/projects/spring-cloud-sleuth
+* https://zipkin.io/
