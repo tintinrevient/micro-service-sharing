@@ -6,6 +6,8 @@ Git Branching策略如下图，目前分为3个branch:
 2. Develop：CI持续集成代码分支。当Feature分支merge到Develop分支后，需要自动执行Code Quality测试，单元测试和集成测试，测试成功后才能merge。
 3. Feature：当每个开发人员，在自己分领任务后，创建的自己的代码分支。
 
+![branching](./pix/branching.png)
+
 Maven的Default Lifecyle包含以下phase：
 
 * validate
