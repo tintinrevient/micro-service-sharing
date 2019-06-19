@@ -93,7 +93,7 @@ brew install grafana
 brew services start grafana
 ```
 
-再访问Grafana UI - http://localhost:3000/datasources/，添加Prometheus为Data source。
+再访问Grafana UI - http://localhost:3000/datasources/ ，添加Prometheus为Data source。
 
 ![grafana-1](./grafana-1.png)
 
