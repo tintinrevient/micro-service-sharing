@@ -3,7 +3,6 @@
 ### Technical Stack
 
 如果一个request或者transaction横跨了多个service，则需要Log Correlation来跟进它在每个service中的执行情况和时间，所以我们用到了如下技术栈来实现监控：
-
 * Spring Cloud Sleuth
 * Spring Cloud Zipkin
 
