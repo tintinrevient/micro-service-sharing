@@ -71,7 +71,7 @@ brew install prometheus
 prometheus --config.file=./prometheus.yml
 ```
 
-此时访问Prometheus UI - http://localhost:9090/graph，可以看到所有RabbitMQ导出的metrics，并可以在此验证Query语句。
+此时访问Prometheus UI - http://localhost:9090/graph ，可以看到所有RabbitMQ导出的metrics，并可以在此验证Query语句。
 
 ![prometheus](./prometheus.png)
 
