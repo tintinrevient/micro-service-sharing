@@ -80,30 +80,30 @@ http_server_requests_seconds_max{exception="None",method="GET",outcome="SUCCESS"
 
 1 - Basic Statistics
 
-![basic-statistics](./basic-statistics.png)
+![basic-statistics](./pix/basic-statistics.png)
 
 2 - JVM Statistics - Memory
 
-![jvm-statistics-1](./jvm-statistics-1.png)
+![jvm-statistics-1](./pix/jvm-statistics-1.png)
 
 3 - JVM Statistics - GC
 
-![jvm-statistics-2](./jvm-statistics-2.png)
+![jvm-statistics-2](./pix/jvm-statistics-2.png)
 
 4 - HikariCP Statistics
 
-![hikaricp-statistics](./hikaricp-statistics.png)
+![hikaricp-statistics](./pix/hikaricp-statistics.png)
 
 5 - HTTP Statistics
 
 这个面板有利于API的性能监控。
 
-![http-statistics](./http-statistics.png)
+![http-statistics](./pix/http-statistics.png)
 
 6 - Tomcat Statistics
 
-![tomcat-statistics](./tomcat-statistics.png)
+![tomcat-statistics](./pix/tomcat-statistics.png)
 
 7 - Logback Statistics
 
-![logback-statistics](./logback-statistics.png)
+![logback-statistics](./pix/logback-statistics.png)
