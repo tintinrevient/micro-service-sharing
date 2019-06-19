@@ -29,9 +29,9 @@
 
 2. 在需要启动的服务的根目录，执行mvn package。
 
-⋅⋅⋅buildVersion需要自己设置，buildVersion会成为部署的Jar File的版本和Docker Image的Tag。
-⋅⋅⋅buildVersion包含SNAPSHOT时，比如1.0.0-SNAPSHOT，build的好的Jar包会在deploy时上传到Maven的snapshot repository；否则其上传到Maven的release repository。
-⋅⋅⋅profile分为local和docker，通过Maven加载resources时的变量"spring.profiles.active"传入。
+    * buildVersion需要自己设置，buildVersion会成为部署的Jar File的版本和Docker Image的Tag。
+    * buildVersion包含SNAPSHOT时，比如1.0.0-SNAPSHOT，build的好的Jar包会在deploy时上传到Maven的snapshot repository；否则其上传到Maven的release repository。
+    * profile分为local和docker，通过Maven加载resources时的变量"spring.profiles.active"传入。
 
 ```
 mvn clean package -Pdocker -DbuildVersion=latest
