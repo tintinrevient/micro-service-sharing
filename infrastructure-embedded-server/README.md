@@ -22,6 +22,14 @@ server:
 
 ![gzip](./pix/gzip.png)
 
+GZip前后，transferred资源大小对比：
+
+* GZip之前，transferred文件1.8 MB，实际resources也是1.8 MB。
+![before](./pix/before.png)
+
+* GZip之后，transferred文件729 KB，实际resources是1.7 MB。
+![after](./pix/after.png)
+
 ### Browser caching of static resources
 
 可以通过设置“cache-control” header来让浏览器缓存静态资源，直到设定的过期日期。在Spring Boot中具体设置如下：
