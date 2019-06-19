@@ -20,7 +20,7 @@ rabbitmq-plugins enable rabbitmq_management
 
 比如关键性能指标Queued messages：一旦Queued messages超过阀指，可以进一步检测是否是Consumer出现问题，或者是需要增加更多的Consumer。
 
-![overview](./overview.png)
+![overview](./pix/overview.png)
 
 比如可以通过如下REST API对RabbitMQ的默认Core node的默认vhost - "/" 进行健康监测：
 
@@ -73,7 +73,7 @@ prometheus --config.file=./prometheus.yml
 
 此时访问Prometheus UI - http://localhost:9090/graph ，可以看到所有RabbitMQ导出的metrics，并可以在此验证Query语句。
 
-![prometheus](./prometheus.png)
+![prometheus](./pix/prometheus.png)
 
 ### 第四步：安装Grafana
 
@@ -95,10 +95,10 @@ brew services start grafana
 
 再访问Grafana UI - http://localhost:3000/datasources/ ，添加Prometheus为Data source。
 
-![grafana-1](./grafana-1.png)
+![grafana-1](./pix/grafana-1.png)
 
 最后在http://localhost:3000/dashboard/import 中点击"Upload .json File"，下载并选择此repository里的JSON文件 - RabbitMQAPIMetrics.json，选择"Prometheus"为数据源。当点击"Load"时，可以看到如下监控面板：
 
-![grafana-2](./grafana-2.png)
+![grafana-2](./pix/grafana-2.png)
 
 Grafana的灵活之处在于，也可以从不同online模板中import不同面板，比如import这个面板：https://grafana.com/dashboards/4279
