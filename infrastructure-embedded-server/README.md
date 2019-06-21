@@ -36,7 +36,7 @@ GZip前后，transferred资源大小对比：
 
 在application.yml中，添加如下配置：
 
-* max-age是以“秒”作为单位，此处设置缓存时间为2秒
+* max-age是以“秒”作为单位，此处设置缓存时间为2分钟
 * must-revalidate设置为true，表示当被请求的静态资源过期时，需要重新和服务器确认
 
 ```
