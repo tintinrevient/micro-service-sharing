@@ -28,6 +28,7 @@ $ redis-stat --verbose --server=7070 5
 * memory：因为所有DB缓存数据，和用户请求session的数据，都保存在memory里。
 * commands per second：在active users在1000的时候，commands per second维持在6000。
 
+
 可以通过如下命令对Redis进行性能测试，其中的主要参数如下：
 
 -n Total number of requests (default 100000)
