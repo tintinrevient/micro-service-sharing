@@ -19,7 +19,7 @@ $ gem install redis-stat
 $ redis-stat --verbose --server=7070 5
 ```
 
-这时访问http://localhost:7070，就可以看到如下监控面板：
+这时访问http://localhost:7070 ，就可以看到如下监控面板：
 ![redis](./pix/redis.png)
 ![redis-info](./pix/redis-info.png)
 
