@@ -13,7 +13,7 @@ OK
 1562305439.352967 [0 127.0.0.1:64376] "del" "spring:session:index:org.springframework.session.FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME:admin"
 ```
 
-也可以安装其他Redis监控工具，比如安装Redis Stat - https://github.com/junegunn/redis-stat，其安装和启动步骤如下：
+也可以安装其他Redis监控工具，比如安装Redis Stat - https://github.com/junegunn/redis-stat ，其安装和启动步骤如下：
 ```
 $ gem install redis-stat
 $ redis-stat --verbose --server=7070 5
