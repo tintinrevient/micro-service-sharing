@@ -26,7 +26,7 @@ worker_processes 1;
 worker_connections 1024;
 ```
 
-一般来说，一个core就运行一个worker process；而一个worker connection的相关因素包含其操作系统设置的最大socket descriptor，也就是file descriptor，我们可以通过如下命令查询其file descriptor：
+一般来说，一个core就运行一个worker process；而影响worker connection的相关因素包含其操作系统设置的最大socket descriptor，也就是file descriptor，我们可以通过如下命令查询其file descriptor：
 ```
 $ ulimit -n
 ```
