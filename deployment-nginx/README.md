@@ -56,4 +56,5 @@ send_timeout 10;
 ### Reference
 1. https://www.datadoghq.com/blog/how-to-monitor-nginx/
 2. https://www.digitalocean.com/community/tutorials/how-to-optimize-nginx-configuration
+3. https://www.nginx.com/blog/tuning-nginx/#worker_connections
 
