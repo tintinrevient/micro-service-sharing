@@ -59,6 +59,17 @@ Integration tests live at the boundary of your service，有如下几种情况�
 
 ![ui](./pix/ui.png)
 
+UI测试包含如下几种类型：
+1. Behaviour
+2. Layout
+3. Usability
+
+
+对于Behaviour测试来说：
+* Angular，React和Vue.js有自己单元测试的工具和helpers
+* 纯Javascript可以用Mocha或者Jasmine来做单元测试
+* 对于JSP等Server-side rendered的界面，可用Selenium
+
 ### Reference
 
 * https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html
