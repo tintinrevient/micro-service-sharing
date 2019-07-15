@@ -84,6 +84,19 @@ UI测试包含如下几种类型：
 3. CDC测试 - https://github.com/pact-foundation
 4. BDD - https://cucumber.io/
 
+### Spring Boot Starter Test包含什么
+
+The spring-boot-starter-test “Starter” (in the test scope) contains the following provided libraries:
+
+* JUnit 4: The de-facto standard for unit testing Java applications.
+* Spring Test & Spring Boot Test: Utilities and integration test support for Spring Boot applications.
+* AssertJ: A fluent assertion library.
+* Hamcrest: A library of matcher objects (also known as constraints or predicates).
+* Mockito: A Java mocking framework.
+* JSONassert: An assertion library for JSON.
+* JsonPath: XPath for JSON.
+
+
 ### Reference
 
 * https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html
