@@ -37,6 +37,13 @@
 @Autowired UserService - Pick the UserService from the Spring Context and autowire it in.
 ```
 
+对于HTTP测试，也有两种测试方法：
+
+1. MockMvc (org.springframework.test.web.servlet.MockMvc) - 也就是mock一个dispatcher servlet，不启动servlet container，没有实际的网络连接，从server-side测试web应用
+
+2. TestRestTemplate (org.springframework.boot.test.web.client.TestRestTemplate) - 实际启动一个servlet container，从client-side测试web应用
+
+
 至于mock和stub的区别，可以参见：https://martinfowler.com/articles/mocksArentStubs.html
 
 ### 集成测试
@@ -69,6 +76,13 @@ UI测试包含如下几种类型：
 * Angular，React和Vue.js有自己单元测试的工具和helpers
 * 纯Javascript可以用Mocha或者Jasmine来做单元测试
 * 对于JSP等Server-side rendered的界面，可用Selenium
+
+### 一些工具
+
+1. Layout测试 - https://github.com/otto-de/jlineup
+2. End-to-End测试 - https://nightwatchjs.org/ (UI向)，https://github.com/rest-assured/rest-assured (REST API向)
+3. CDC测试 - https://github.com/pact-foundation
+4. BDD - https://cucumber.io/
 
 ### Reference
 
