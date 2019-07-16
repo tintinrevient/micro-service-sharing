@@ -58,7 +58,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
 }
 ```
 
-这时启动Spring Boot项目，可以在http://localhost:8080/swagger-ui.html中，看到如下Swagger UI的界面：
+这时启动Spring Boot项目，可以在http://localhost:8080/swagger-ui.html 中，看到如下Swagger UI的界面：
 ![swagger](./pix/swagger.png)
 
 除此之外，也可以更丰富以上Swagger UI对各个API、方法和参数的说明，及其引入default参数值。如下是Swagger UI Annotation的一个列表，更具体内容参见：https://github.com/swagger-api/swagger-core/wiki/annotations
