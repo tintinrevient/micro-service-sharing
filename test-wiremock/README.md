@@ -34,7 +34,7 @@ public class DownstreamServiceControllerTests {
 }
 ```
 
-3. 这时在如下单元测试的时候，请求http://localhost:6061/review/1，则会调用stub的canned response：
+3. 这时在如下单元测试的时候，请求http://localhost:6061/review/1 ，则会调用stub的canned response：
 ```
 @Test
 public void aggregate() {
