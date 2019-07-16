@@ -17,7 +17,7 @@ CDC测试中，我们用到的工具是Pact - https://docs.pact.io/ ，其具体
 
 以下是要注意的参数：
 * provider是"review_service"，定义在PactProviderRuleMk2
-* consumer是demo_consumer，定义在Pact
+* consumer是"demo_consumer"，定义在Pact
 
 ```
 @RunWith(SpringRunner.class)
