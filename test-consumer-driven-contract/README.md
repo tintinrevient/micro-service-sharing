@@ -141,7 +141,7 @@ public class ConsumerTests {
 
 5. 此时，执行mvn spring-boot:run，启动review_service这个producer微服务。
 
-6. 最后，在review_service这个微服务的根目录，执行如下命令，验证合约是否满足：
+6. 最后，在review_service这个微服务的根目录下，执行如下命令，验证合约是否满足：
 ```
 $ mvn pact:verify
 ```
