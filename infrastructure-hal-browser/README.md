@@ -1,6 +1,6 @@
 ## HAL Browser
 
-[JSON Hypertext Application Language](http://stateless.co/hal_specification.html) (HAL) 是一种数据格式，HAL为JSON定义的media type是application/hal+json。HAL Browser可以展示HAL数据格式，即各个资源和他们API间的hyperlink，让开发能更好的检索、浏览和操作REST API。功能类似于Swagger UI。
+[JSON Hypertext Application Language](http://stateless.co/hal_specification.html) (HAL) 是一种数据格式，HAL为JSON定义的media type是application/hal+json。HAL Browser可以展示HAL数据格式，即各个资源和他们API间的hyperlink，让开发能更好的检索、浏览和操作REST API。功能类似于Swagger UI，Swagger UI偏向于API的展示，而HAL Browser偏向于RESTful资源的展示。
 
 简单来讲，HAL模型包含：
 
