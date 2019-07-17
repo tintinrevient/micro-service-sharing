@@ -13,7 +13,7 @@ docker run -p 80:80 -e PACT_BROKER_DATABASE_ADAPTER=sqlite -e PACT_BROKER_DATABA
 
 注意：如果需要启动持久的Pact Broker，需要使用postgres或者mysql数据库，具体配置参见：https://hub.docker.com/r/dius/pact-broker
 
-这时访问http://localhost/，可以看到Pack Broker的界面：
+这时访问http://localhost/ ，可以看到Pack Broker的界面：
 ![pact](./pix/pact.png)
 
 ### Consumer微服务怎么发布一个contract到Pact Broker?
