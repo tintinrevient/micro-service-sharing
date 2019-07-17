@@ -51,7 +51,7 @@ public void uploadMP4() throws Exception {
 
 REST API的相对地址是：“/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children”。如下是上传图片的Curl命令，其中test.png是terminal执行当下路径中包含的test.png文件：
 ```
-curl -u admin:1234 -X POST http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children -F filedata=@test.png
+curl -u admin:admin -X POST http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children -F filedata=@test.png
 
 ```
 
@@ -59,12 +59,12 @@ curl -u admin:1234 -X POST http://localhost:9081/alfresco/api/-default-/public/a
 * 可以在http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children 里面查看test.png的node ID，例如：25fa80c7-365b-4164-b3c4-ffb66a45b5ca
 * 在Curl上传完test.png后，node ID和文件名也会返回，如下是返回信息：
 ```
-{"entry":{"isFile":true,"createdByUser":{"id":"admin","displayName":"Administrator"},"modifiedAt":"2019-07-17T10:24:46.222+0000","nodeType":"cm:content","content":{"mimeType":"image/png","mimeTypeName":"PNG Image","sizeInBytes":74660,"encoding":"UTF-8"},"parentId":"9f3fcc4d-8820-4e73-b818-453276130443","aspectNames":["cm:versionable","cm:titled","cm:auditable","cm:author","exif:exif"],"createdAt":"2019-07-17T10:24:46.222+0000","isFolder":false,"modifiedByUser":{"id":"admin","displayName":"Administrator"},"name":"test1.png","id":"e06b62eb-b7bb-4e96-ba6c-c501d81fd3fb","properties":{"exif:pixelYDimension":912,"cm:versionType":"MAJOR","cm:versionLabel":"1.0","exif:pixelXDimension":1802}}}
+{"entry":{"isFile":true,"createdByUser":{"id":"admin","displayName":"Administrator"},"modifiedAt":"2019-07-17T10:24:46.222+0000","nodeType":"cm:content","content":{"mimeType":"image/png","mimeTypeName":"PNG Image","sizeInBytes":74660,"encoding":"UTF-8"},"parentId":"9f3fcc4d-8820-4e73-b818-453276130443","aspectNames":["cm:versionable","cm:titled","cm:auditable","cm:author","exif:exif"],"createdAt":"2019-07-17T10:24:46.222+0000","isFolder":false,"modifiedByUser":{"id":"admin","displayName":"Administrator"},"name":"test.png","id":"25fa80c7-365b-4164-b3c4-ffb66a45b5ca","properties":{"exif:pixelYDimension":912,"cm:versionType":"MAJOR","cm:versionLabel":"1.0","exif:pixelXDimension":1802}}}
 ```
 
 从服务器下载test.png文件，可以用如下Curl命令：
 ```
-$ curl -u admin:1234 -X GET http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/25fa80c7-365b-4164-b3c4-ffb66a45b5ca/content
+$ curl -u admin:admin -X GET http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/25fa80c7-365b-4164-b3c4-ffb66a45b5ca/content
 ```
 
 预览刚刚上传的test.png图片，地址是：http://localhost:9081/share/proxy/alfresco/slingshot/node/content/workspace/SpacesStore/25fa80c7-365b-4164-b3c4-ffb66a45b5ca/test.png
