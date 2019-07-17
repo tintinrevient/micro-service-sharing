@@ -19,7 +19,7 @@
 * 用户名：admin
 * 密码：admin
 
-1. CMIS REST API的例子
+#### CMIS REST API的例子
 
 在Java的Maven项目中，需要在pom.xml中配置Apache Chemistry依赖：
 ```
@@ -47,9 +47,9 @@ public void uploadMP4() throws Exception {
 }
 ```
 
-2. REST API的例子
+#### REST API的例子
 
-REST API的相对地址是：“/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children”。所以Curl命令如下，其中@test.png是terminal当下路径中包含的test.png文件：
+REST API的相对地址是：“/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children”。如下是上传图片的Curl命令，其中test.png是terminal执行当下路径中包含的test.png文件：
 ```
 curl -u admin:1234 -X POST http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/-my-/children -F filedata=@test.png
 
