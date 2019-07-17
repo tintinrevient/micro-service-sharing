@@ -1,79 +1,81 @@
-## Pact Broker
+## Swagger UI
 
-Pact Broker用于存储CDC Tests中consumer微服务生成的API合约，便于producer微服务验证其是否遵守了API合约。这有利于各个微服务开发团队之间的独立开发与协作，以及微服务上线的持续集成。
+配置Swagger UI，可以帮助各个开发团队快速地浏览和使用基于Restful API的微服务。
 
-Pact Broker的详细讲解，参见：https://github.com/pact-foundation/pact_broker
+在Spring Boot中，Swagger UI的具体配置如下：
 
-### 如何搭建Pact Broker服务器？
-
-如下命令，可以从docker image启用一个temporary的Pact Broker服务器：
+1. 在pom.xml文件中，加入如下依赖：
 ```
-docker run -p 80:80 -e PACT_BROKER_DATABASE_ADAPTER=sqlite -e PACT_BROKER_DATABASE_NAME=pact_broker.sqlite dius/pact-broker
-```
-
-注意：如果需要启动持久的Pact Broker，需要使用postgres或者mysql数据库，具体配置参见：https://hub.docker.com/r/dius/pact-broker
-
-这时访问http://localhost/，可以看到Pack Broker的界面：
-![pact](./pix/pact.png)
-
-### Consumer微服务怎么发布一个contract到Pact Broker?
-
-在consumer微服务pom.xml中，加入如下maven plugin：
-
-```
-<plugin>
-    <groupId>au.com.dius</groupId>
-    <artifactId>pact-jvm-provider-maven_2.12</artifactId>
-    <version>3.6.11</version>
-    <configuration>
-        <pactDirectory>target/pacts</pactDirectory>
-        <pactBrokerUrl>http://localhost</pactBrokerUrl>
-        <trimSnapshot>true</trimSnapshot>
-    </configuration>
-</plugin>
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger2</artifactId>
+    <version>2.5.0</version>
+</dependency>
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-swagger-ui</artifactId>
+    <version>2.5.0</version>
+</dependency>
 ```
 
-这时执行如下命令，生成的contract就可以上传到Pact Broker：
-
+2. 在Java配置文件中，加入如下配置：
 ```
-mvn pact:publish
+@EnableSwagger2
+@Configuration
+public class SwaggerConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+        registry
+                .addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+
+        registry
+                .addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+    }
+
+    @Bean
+    public Docket apiDocket() {
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(getApiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.hncy.demo"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
+    private ApiInfo getApiInfo() {
+
+        return new ApiInfoBuilder()
+                .title("Spring Boot Sample")
+                .description("")
+                .version("0.0.1-SNAPSHOT")
+                .build();
+    }
+}
 ```
 
-### Producer微服务怎么从Pact Broker获取contract，从而验证其是否遵守合约?
+这时启动Spring Boot项目，可以在http://localhost:8080/swagger-ui.html 中，看到如下Swagger UI的界面：
+![swagger](./pix/swagger.png)
 
-在producer微服务pom.xml中，加入如下maven plugin：
+除此之外，也可以更丰富以上Swagger UI对各个API、方法和参数的说明，及其引入default参数值。如下是Swagger UI Annotation的一个列表，更具体内容参见：https://github.com/swagger-api/swagger-core/wiki/annotations
+![annotation](./pix/annotation.png)
 
+1. 对类的说明@Api：
 ```
-<plugin>
-    <groupId>au.com.dius</groupId>
-    <artifactId>pact-jvm-provider-maven_2.12</artifactId>
-    <version>3.6.11</version>
-    <configuration>
-        <serviceProviders>
-            <serviceProvider>
-                <name>review_service</name>
-                <pactBrokerUrl>http://localhost</pactBrokerUrl>
-                <protocol>http</protocol>
-                <host>localhost</host>
-                <port>6061</port>
-                <path>/</path>
-            </serviceProvider>
-        </serviceProviders>
-    </configuration>
-</plugin>
+@Api(description="Operations about users")
+public class UserController {
+
+}
 ```
 
-这时执行如下命令，可以验证producer微服务是否遵守了合约：
-
+2. 对各个HTTP方法的说明@ApiOperation和对其传入参数的说明@ApiParam：
 ```
-mvn pact:verify
+@ApiOperation(value = "Create a user with its id", consumes = MediaType.APPLICATION_JSON_VALUE)
+public void save(@ApiParam(value = "user data", required = true) @RequestBody User user) {
+    userRepository.save(user);
+}
 ```
-
-### Pact Broker的其他功能
-
-Pact Broker可以自动生成contract的说明：
-![contract](./pix/contract.png)
-
-还可以自动生成微服务之间的依赖网络关系：
-![network](./pix/network.png)
-
