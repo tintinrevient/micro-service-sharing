@@ -52,7 +52,7 @@ public void aggregate() {
 
 这里需要注意的是，对下游服务返回的JSON怎么反序列化为POJO，其中的原则是Postel's Law：
 
-"TCP implementations should follow a general principle of robustness: be conservative in what you do, be liberal in what you accept from others."
+> "TCP implementations should follow a general principle of robustness: be conservative in what you do, be liberal in what you accept from others."
 
 所以为了对接受的JSON数据更tolerant，需要在POJO的定义中，加入如下配置。这时，如果返回的JSON中存在未知的属性，convert成POJO时，也不会报错。
 
