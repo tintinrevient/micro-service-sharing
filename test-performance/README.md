@@ -61,3 +61,8 @@ Load Test：如下，测试持续累加的用户并发量对Response Time的影�
 
 Spike Test 和 Soak Test：如下，测试高峰期或长时间持续高并发的场景，及过后的恢复。
 ![spike-test](./pix/spike-test.png)
+
+### Reference
+
+* https://en.wikipedia.org/wiki/Software_performance_testing
+* https://en.wikipedia.org/wiki/Load_testing
