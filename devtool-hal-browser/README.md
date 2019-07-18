@@ -26,7 +26,7 @@
 2. Inspector - 如下，可以看到对资源http://localhost:8080/users/2 的Response Headers和Response Body的详细信息。
 ![inspector](./pix/inspector.png)
 
-除此之外，还可以对资源进行增删改查的操作，比如针对http://localhost:8080/profile/users 资源，可以填写如下表单，增加一个新用户：
+除此之外，还可以对资源进行增删改查的操作，比如针对http://localhost:8080/users 资源，可以填写如下表单，增加一个新用户：
 ![form](./pix/form.png)
 
 这时查询users下的资源，可以找到新添加的用户：
