@@ -4,11 +4,11 @@
 
 #### JDBC Architecture
 
-Overview Architecture
+Overview Architecture:
 
 ![jdbc-overview](./pix/jdbc-overview.gif)
 
-Detailed Architecture
+Detailed Architecture:
 
 ![jdbc-architecture](./pix/jdbc-architecture.jpg)
 
