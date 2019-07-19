@@ -3,10 +3,13 @@
 ### JDBC
 
 #### JDBC Architecture
+
 Overview Architecture
+
 ![jdbc-overview](./pix/jdbc-overview.gif)
 
 Detailed Architecture
+
 ![jdbc-architecture](./pix/jdbc-architecture.jpg)
 
 #### What are the common tasks of JDBC ?
