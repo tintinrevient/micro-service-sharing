@@ -38,16 +38,17 @@ A JDBC DataSource is an object used to establish a connection to a permanent sto
 #### JDBC Connection Pooling Frameworks & Benchmarking
 ![benchmark](./pix/benchmark.png)
 
+![bench-2.6.0](./pix/bench-2.6.0.png)
+
+* One Connection Cycle is defined as single DataSource.getConnection()/Connection.close().
+* One Statement Cycle is defined as single Connection.prepareStatement(), Statement.execute(), Statement.close().
+
 ### Hibernate
 ![hibernate](./pix/hibernate.jpg)
 
 ### Database Cluster
 ![db-cluster](./pix/db-cluster.png)
 
-![bench-2.6.0](./pix/bench-2.6.0.png)
-
-* One Connection Cycle is defined as single DataSource.getConnection()/Connection.close().
-* One Statement Cycle is defined as single Connection.prepareStatement(), Statement.execute(), Statement.close().
 
 ### Reference
 * https://dzone.com/articles/jdbc-api
