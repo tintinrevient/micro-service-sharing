@@ -58,3 +58,5 @@ A JDBC DataSource is an object used to establish a connection to a permanent sto
 * https://blog.csdn.net/qq_31125793/article/details/51241943
 * https://github.com/brettwooldridge/HikariCP-benchmark
 * https://github.com/brettwooldridge/HikariCP
+* https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+* https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing
