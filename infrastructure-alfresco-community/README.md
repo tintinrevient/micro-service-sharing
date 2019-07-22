@@ -68,7 +68,7 @@ curl -u admin:admin -X POST http://localhost:9081/alfresco/api/-default-/public/
 
 从服务器下载test.png文件，可以用如下Curl命令。其中，URL的地址是："/alfresco/api/-default-/public/alfresco/versions/1/nodes/" + {Node ID} + "/content"。
 ```
-$ curl -u admin:admin -X GET http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/25fa80c7-365b-4164-b3c4-ffb66a45b5ca/content
+$ curl -o ./test.png -u admin:admin -X GET http://localhost:9081/alfresco/api/-default-/public/alfresco/versions/1/nodes/25fa80c7-365b-4164-b3c4-ffb66a45b5ca/content
 ```
 
 ##### 预览刚刚上传的test.png图片，
