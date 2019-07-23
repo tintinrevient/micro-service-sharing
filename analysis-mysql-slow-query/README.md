@@ -76,15 +76,16 @@ $ ./pt-query-digest /.../db-slow.log
 
 以上每个指标的意思如下：
 
-| Column       | Meaning                                                    |
-|--------------------------------------------------------------------------|
-| Rank         | The query's rank within the entire set of queries analyzed |
-| Query ID     | The query's fingerprint                                    |
-| Response time| The total response time, and percentage of overall total   |
-| Calls        | The number of times this query was executed                |
-| R/Call       | The mean response time per execution                       |
-| V/M          | The Variance-to-mean ratio of response time                |
-| Item         | The distilled query                                        |
+| Column        |        Meaning                                             |
+|---------------|------------------------------------------------------------|
+| Rank          | The query's rank within the entire set of queries analyzed |
+| Query ID      | The query's fingerprint                                    |
+| Response time | The total response time, and percentage of overall total   |
+| Calls         | The number of times this query was executed                |
+| R/Call        | The mean response time per execution                       |
+| V/M           | The Variance-to-mean ratio of response time                |
+| Item          | The distilled query                                        |
+
 
 ### Reference
 
