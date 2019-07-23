@@ -1,7 +1,9 @@
 ## HAProxy to Load Balance MySQL-Read-Replica Servers
 
 ### Infrastructure
+
 数据库Read的Load balancer架构如下：
+
 ![infra](./pix/infra.png)
 
 其中，具体Linux服务器的信息如下：
