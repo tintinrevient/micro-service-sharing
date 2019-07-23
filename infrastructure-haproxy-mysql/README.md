@@ -86,6 +86,7 @@ $ mysql -h 127.0.0.1 -u haproxy_root -p -e "show variables like 'server_id'"
 ```
 
 如果load balance成功，会看到如下两个response，在以roundrobin的方式交替显示：
+
 | Variable_name  | Value |
 |----------------|-------|
 | server_id      | 2     |
