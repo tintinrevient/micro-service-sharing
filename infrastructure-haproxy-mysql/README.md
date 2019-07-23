@@ -35,6 +35,7 @@ listen mysql_cluster
     server mysql-2 192.168.0.174:3306 check weight 1
 ```
 
+
     HTTP的监控配置如下：
 
 ```
