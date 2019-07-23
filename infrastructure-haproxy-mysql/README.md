@@ -21,10 +21,9 @@ $ apt-get install haproxy
 
 2. 修改/etc/haproxy/haproxy.cfg，添加如下配置：
 
-    MySQL的load balancing配置如下：
+MySQL的load balancing配置如下：
 
-    * 注意：haproxy_check是mysql-1和mysql-2的无需密码登陆的mysql.user，之后会分别加入到如下两个mysql-server的mysql.user中。
-
+* 注意：haproxy_check是mysql-1和mysql-2的无需密码登陆的mysql.user，之后会分别加入到如下两个mysql-server的mysql.user中。
 ```
 listen mysql_cluster
     bind 127.0.0.1:3306
