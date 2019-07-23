@@ -1,6 +1,6 @@
 ## HAProxy to Load Balance MySQL-Read-Replica Servers
 
-### Infrastructure
+### 架构
 
 数据库Read的Load balancer架构如下：
 
@@ -94,3 +94,101 @@ $ mysql -h 127.0.0.1 -u haproxy_root -p -e "show variables like 'server_id'"
 | Variable_name  | Value |
 |----------------|-------|
 | server_id      | 3     |
+
+### 怎么配置MySQL所在的服务器
+
+1. 安装mysql-client和mysql-server
+
+```
+$ apt-get install mysql-client mysql-server
+```
+
+2. 修改/etc/mysql/my.cnf，添加如下配置：
+    * 192.168.0.193的server-id是2，192.168.0.194的server-id是3。这样便于在HAProxy验证load balancing的时候，区分不同MySQL数据库。
+
+```
+[mysqld]
+bind-address                    = 192.168.0.193/194
+server-id                       = 2/3
+```
+
+3. 然后重新启动mysql。
+
+```
+$ service mysql restart
+```
+
+或者
+
+```
+$ systemctl restart mysql
+```
+
+这时可以通过如下命令，验证bind-address是否设置成功：
+
+```
+$ sudo netstat -plutn | grep -i mysql
+```
+
+当bind-address设置成功，会看到如下信息：
+
+```
+tcp        0      0 192.168.0.173:3306      0.0.0.0:*               LISTEN      19755/mysqld
+```
+
+4. 最后以默认root/root登录mysql shell：
+
+```
+$ /usr/bin/mysql -u root -p
+```
+
+5. 添加haproxy_root@192.168.0.171，到mysql.user：
+
+```
+mysql > GRANT ALL PRIVILEGES ON *.* TO 'haproxy_root'@'192.168.0.171' IDENTIFIED BY 'root' WITH GRANT OPTION;
+mysql > FLUSH PRIVILEGES;
+```
+
+6. 添加haproxy_check@192.168.0.171，到mysql.user：
+
+```
+mysql > INSERT INTO mysql.user (Host,User,ssl_cipher,x509_issuer,x509_subject) values ('192.168.0.171','haproxy_check','','','');
+mysql > FLUSH PRIVILEGES;
+```
+
+这时执行如下query，可以看到新添加的用户：
+
+```
+mysql > select user, host from mysql.user;
+```
+
+添加的用户如下：
+
+| user             | host          |
+|------------------|---------------|
+| haproxy_check    | 192.168.0.171 |
+| haproxy_root     | 192.168.0.171 |
+
+
+### Reference
+
+* https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-mysql-load-balancing--3
+* https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
+
+* [ufw firewall](https://linoxide.com/firewall/guide-ufw-firewall-ubuntu-16-10/)
+
+```
+$ sudo ufw allow mysql
+```
+
+* [Determine which MySQL configuration file is being used](https://stackoverflow.com/questions/580331/determine-which-mysql-configuration-file-is-being-used)
+
+```
+$ /usr/sbin/mysqld --verbose --help | grep -A 1 "Default options"
+```
+
+* [Bind address and MySQL server](https://stackoverflow.com/questions/3552680/bind-address-and-mysql-server)
+
+    * If MySQL binds to 127.0.0.1, then only software on the same computer will be able to connect (because 127.0.0.1 is always the local computer).
+    * If MySQL binds to 192.168.0.2 (and the server computer's IP address is 192.168.0.2 and it's on a /24 subnet), then any computers on the same subnet (anything that starts with 192.168.0) will be able to connect.
+    * If MySQL binds to 0.0.0.0, then any computer which is able to reach the server computer over the network will be able to connect.
