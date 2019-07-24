@@ -3,6 +3,12 @@
 
 ### How to Install MySQL 8.0 in Ubuntu 18.04
 
+#### Check Ubuntu Version
+
+```
+$ lsb_release -a
+```
+
 #### Step 1: Add MySQL Apt Repository
 
 You need to add this MySQL repository to your system’s package sources list
@@ -45,11 +51,6 @@ $ mysql --version
 ```
 
 ### How to Uninstalling MySQL 5.7 in Ubuntu 18.04
-
-Check Ubuntu version:
-```
-$ lsb_release -a
-```
 
 Use apt to uninstall and remove all MySQL packages:
 ```
