@@ -33,6 +33,8 @@ $ apt-get update --allow-unauthenticated
 $ apt-get update --allow-insecure-repositories
 ```
 
+Below warnnign messages will display if insecure repositories are allowed:
+
 > W: GPG error: http://repo.mysql.com/apt/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG 8C718D3B5072E1F5 MySQL Release Engineering <mysql-build@oss.oracle.com>
 >
 > W: The repository 'http://repo.mysql.com/apt/ubuntu bionic InRelease' is not signed.
@@ -53,7 +55,7 @@ Verify MySQL version, and the sample response is "mysql  Ver 8.0.17 for Linux on
 $ mysql --version
 ```
 
-### How to Uninstalling MySQL 5.7 in Ubuntu 18.04
+### How to Uninstall MySQL 5.7 in Ubuntu 18.04
 
 Use apt to uninstall and remove all MySQL packages:
 ```
