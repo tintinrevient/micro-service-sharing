@@ -39,11 +39,11 @@ A JDBC DataSource is an object used to establish a connection to a permanent sto
 
 以下测试结果来自：https://github.com/brettwooldridge/HikariCP-benchmark
 
-![benchmark](./pix/benchmark.png)
+![bench-2.6.0](./pix/bench-2.6.0.png)
 
 以下测试结果来自运行其benchmark.sh。可以看到综合性能上比较：hikari > druid > tomcat jdbc > vibur > apache dbcp2 > c3p0。
 
-![bench-2.6.0](./pix/bench-2.6.0.png)
+![benchmark](./pix/benchmark.png)
 
 * One Connection Cycle is defined as single DataSource.getConnection()/Connection.close().
 * One Statement Cycle is defined as single Connection.prepareStatement(), Statement.execute(), Statement.close().
