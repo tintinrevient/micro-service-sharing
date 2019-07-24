@@ -46,6 +46,11 @@ $ mysql --version
 
 ### How to Uninstalling MySQL 5.7 in Ubuntu 18.04
 
+Check Ubuntu version:
+```
+$ lsb_release -a
+```
+
 Use apt to uninstall and remove all MySQL packages:
 ```
 $ apt-get remove --purge mysql-server mysql-client mysql-common -y
