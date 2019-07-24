@@ -36,12 +36,36 @@ A JDBC DataSource is an object used to establish a connection to a permanent sto
 ![cp-thread](./pix/cp-thread.png)
 
 #### JDBC Connection Pooling Frameworks & Benchmarking
+
+以下测试结果来自：https://github.com/brettwooldridge/HikariCP-benchmark
+
 ![benchmark](./pix/benchmark.png)
+
+以下测试结果来自运行其benchmark.sh。可以看到综合性能上比较：hikari > druid > tomcat jdbc > vibur > apache dbcp2 > c3p0。
 
 ![bench-2.6.0](./pix/bench-2.6.0.png)
 
 * One Connection Cycle is defined as single DataSource.getConnection()/Connection.close().
 * One Statement Cycle is defined as single Connection.prepareStatement(), Statement.execute(), Statement.close().
+
+以下结果是用Apache Benchmarking做了一个Full-Stack的测试，不同Data Source的测试结果如下：
+
+Hikari的结果：
+![hikari-innodb](./pix/hikari-innodb.png)
+
+Druid的结果：
+![druid-innodb-2](./pix/druid-innodb-2.png)
+
+Tomcat JDBC的结果：
+![tomcat-jdbc-innodb](./pix/tomcat-jdbc-innodb.png)
+
+DBCP2的结果：
+![dbcp2-innodb](./pix/dbcp2-innodb.png)
+
+C3P0的结果：
+![c3p0-innodb](./pix/c3p0-innodb.png)
+
+注意Pool Size的设置公式：connections = ((core_count * 2) + effective_spindle_count)。比如4-Core i7 服务器和1个硬盘，connections = ((4 * 2) + 1) = 9。
 
 ### Hibernate
 ![hibernate](./pix/hibernate.jpg)
