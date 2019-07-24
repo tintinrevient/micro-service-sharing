@@ -26,6 +26,11 @@ mysql > SET PERSIST gtid_mode=ON；
 mysql > RESTART;
 ```
 
+当重启后，可以通过如下query验证运行时配置是否生效：
+```
+mysql > select * from performance_schema.global_variables;
+```
+
 #### Master中添加Replication User
 
 MySQL 8.0的default_authentication_plugin为caching_sha2_password。如果要使用mysql_native_password，则执行如下命令：
