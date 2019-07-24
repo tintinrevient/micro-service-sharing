@@ -33,7 +33,7 @@ $ apt-get update --allow-unauthenticated
 $ apt-get update --allow-insecure-repositories
 ```
 
-Below warnnign messages will display if insecure repositories are allowed:
+Below warnings messages will display if insecure repositories are allowed:
 
 > W: GPG error: http://repo.mysql.com/apt/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG 8C718D3B5072E1F5 MySQL Release Engineering <mysql-build@oss.oracle.com>
 >
