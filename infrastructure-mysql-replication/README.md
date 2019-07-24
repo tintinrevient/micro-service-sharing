@@ -33,10 +33,10 @@ $ apt-get update --allow-unauthenticated
 $ apt-get update --allow-insecure-repositories
 ```
 
-| W: GPG error: http://repo.mysql.com/apt/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG 8C718D3B5072E1F5 MySQL Release Engineering <mysql-build@oss.oracle.com>
-| W: The repository 'http://repo.mysql.com/apt/ubuntu bionic InRelease' is not signed.
-| N: Data from such a repository can't be authenticated and is therefore potentially dangerous to use.
-| N: See apt-secure(8) manpage for repository creation and user configuration details.
+> W: GPG error: http://repo.mysql.com/apt/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG 8C718D3B5072E1F5 MySQL Release Engineering <mysql-build@oss.oracle.com>
+> W: The repository 'http://repo.mysql.com/apt/ubuntu bionic InRelease' is not signed.
+> N: Data from such a repository can't be authenticated and is therefore potentially dangerous to use.
+> N: See apt-secure(8) manpage for repository creation and user configuration details.
 
 Install packages for the MySQL community server and client.
 
