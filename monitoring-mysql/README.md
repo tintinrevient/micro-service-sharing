@@ -43,3 +43,7 @@ $ prometheus --config.file=./prometheus.yml
 比如MySQL Overview的dashboard如下：
 ![overview](./pix/overview.png)
 
+### Reference
+
+* https://github.com/prometheus/mysqld_exporter
+* https://github.com/percona/grafana-dashboards
