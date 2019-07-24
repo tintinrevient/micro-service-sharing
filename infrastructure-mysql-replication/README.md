@@ -5,7 +5,9 @@
 #### 基本服务器信息
 
 Master - 192.168.0.172
+
 Slave 1 - 192.168.0.173
+
 Slave 2 - 192.168.0.174
 
 #### 配置Master和Slave的my.cnf的[mysqld]
