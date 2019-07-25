@@ -144,5 +144,5 @@ $ rm -rf /etc/mysql
 * https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/caching-sha2-pluggable-authentication.html
 * https://www.tecmint.com/install-mysql-8-in-ubuntu/
 * https://help.cloud66.com/node/how-to-guides/databases/shells/uninstall-mysql.html
-* https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/#apt-repo-fresh-install
+* https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 * https://www.thegeekdiary.com/mysql-8-0-persisted-variables/

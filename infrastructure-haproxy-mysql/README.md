@@ -173,7 +173,7 @@ mysql > select user, host from mysql.user;
 
 ### 错误及其修改方法
 
-#### Host is blocked because of many connection errors
+#### 1. Host is blocked because of many connection errors
 
 当在192.168.0.171的mysql-client，验证remote mysql-server的连接时：
 
@@ -200,6 +200,36 @@ mysql > flush hosts;
 mysql > SET PERSIST max_connect_errors=10000;
 mysql > restart;
 ```
+
+#### 2. HAProxy does not forward requests while listening on 本机的3306端口
+
+第一步，当执行如下命令：
+
+```
+$ netstat -plutn | grep -i haproxy
+```
+
+可以看到HAProxy正常监听本机的3306端口。本机的IP是192.168.0.171。
+
+```
+tcp        0      0 0.0.0.0:8100            0.0.0.0:*               LISTEN      1171/haproxy
+tcp        0      0 192.168.0.171:3306      0.0.0.0:*               LISTEN      1171/haproxy
+```
+
+第二步，当用mysql-client直接连接到remote的mysql-server，比如192.168.0.173或者192.168.0.174时，以下直接连接是能成功的。
+```
+$ mysql -h 192.168.0.173 -u haproxy_root -p -e "show variables like 'server_id'
+```
+
+第三步，当用mysql-client命令，让HAProxy forward requests到remote的mysql-server时，出现无法连接远程MySQL服务器的错误。
+
+```
+$ mysql -h 192.168.0.171 -u haproxy_root -p -e "show variables like 'server_id'"
+```
+
+那么错误原因是因为在haproxy.cfg中，设置的"option mysql-check user haproxy"，需要改成"option tcp-check"。
+* option mysql-check是layer 7的load balancing，而layer 7 load balancing是application级别的。此时，mysql-client并没有启动。
+* option tcp-check是layer 4的load balancing，而layer 4 load balancing不需要mysql-client的应用被启动。
 
 ### Reference
 
