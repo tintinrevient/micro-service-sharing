@@ -33,14 +33,13 @@ mysql > select * from performance_schema.global_variables;
 
 #### Master中添加Replication User
 
-MySQL 8.0的default_authentication_plugin为caching_sha2_password。如果要使用mysql_native_password，则执行如下命令：
+MySQL 8.0的default_authentication_plugin为caching_sha2_password，而MySQL 5.7的default_authentication_plugin为mysql_native_password。
 
-```
-mysql > CREATE USER 'slave'@'%' IDENTIFIED WITH mysql_native_password BY 'slave';
-mysql > GRANT REPLICATION SLAVE ON *.* TO 'slave'@'%';
-```
+caching_sha2_password的身份验证有两种方式：
+1. SSL - Connections over secure transport
+2. RSA private and public key-pair - Unencrypted connections
 
-如果使用caching_sha2_password，则执行如下命令：
+如果使用SSL，则执行如下命令：
 
 ```
 mysql > CREATE USER 'slave'@'%' IDENTIFIED BY 'slave' REQUIRE SSL;
@@ -49,15 +48,7 @@ mysql > GRANT REPLICATION SLAVE ON *.* TO 'slave'@'%';
 
 #### Slave通过Replication User连接到Master
 
-MySQL 8.0的default_authentication_plugin为caching_sha2_password。如果Master的replication user使用的是mysql_native_password，则执行如下命令：
-
-```
-mysql > STOP SLAVE;
-mysql > CHANGE MASTER TO MASTER_HOST='192.168.0.172', MASTER_PORT=3306, MASTER_USER='slave', MASTER_PASSWORD='slave', MASTER_AUTO_POSITION=1;
-mysql > START SLAVE;
-```
-
-如果Master的replication user使用的是caching_sha2_password，则执行如下命令：
+当Master的replication user使用的是caching_sha2_password的SSL，Slave连接到Master，则执行如下命令：
 
 ```
 mysql > STOP SLAVE;
