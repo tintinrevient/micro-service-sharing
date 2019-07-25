@@ -138,6 +138,12 @@ Use apt to uninstall and remove all MySQL packages:
 $ apt-get remove --purge mysql-server mysql-client mysql-common -y
 $ apt-get autoremove -y
 $ apt-get autoclean
+
+/* Remove the configuration - It might impact the update */
+
+$ rm -rf /var/lib/mysql
+$ rm -rf /var/log/mysql
+$ rm -rf /etc/mysql
 ```
 
 ### Reference

@@ -171,6 +171,36 @@ mysql > select user, host from mysql.user;
 | haproxy_root     | 192.168.0.171 |
 
 
+### 错误及其修改方法
+
+#### Host is blocked because of many connection errors
+
+当在192.168.0.171的mysql-client，验证remote mysql-server的连接时：
+
+```
+mysql -h 192.168.0.173/174 -u haproxy_root -p -e "show variables like 'server_id'"
+```
+
+出现如下错误：
+
+```
+Host '192.168.0.171' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts'
+```
+
+可以在mysql-server：192.168.0.173和192.168.0.174，做如下操作：
+
+```
+$ mysqladmin -u root -p flush-hosts
+```
+
+或者在MySQL Shell中，做如下操作：
+
+```
+mysql > flush hosts;
+mysql > SET PERSIST max_connect_errors=10000;
+mysql > restart;
+```
+
 ### Reference
 
 * https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-mysql-load-balancing--3
