@@ -15,16 +15,15 @@
 
 ### 怎么配置HAProxy所在的服务器
 
-1. 安装HAProxy
+#### 安装HAProxy
 
 ```
 $ apt-get install haproxy
 ```
 
-2. 修改/etc/haproxy/haproxy.cfg，添加如下配置：
+#### 修改/etc/haproxy/haproxy.cfg，添加如下配置：
 
-    2.1 MySQL的load balancing配置如下：
-
+MySQL的load balancing配置如下：
 ```
 listen mysql_cluster
 	bind 127.0.0.1:3306
@@ -37,7 +36,7 @@ listen mysql_cluster
         server mysql-2 192.168.0.174:3306 weight 50 check port 3306 inter 5000 rise 1 fall 3 maxconn 75
 ```
 
-    2.2 HTTP的监控配置如下：
+HTTP的监控配置如下：
 ```
 listen monitoring
         bind 0.0.0.0:8100
@@ -48,7 +47,7 @@ listen monitoring
         stats auth admin:admin
 ```
 
-3. 配置完后，启动HAProxy：
+#### 启动HAProxy：
 
 先验证配置是否有效。如果配置有效，会看到提示："Configuration file is valid"。
 
@@ -62,8 +61,13 @@ $ haproxy -c -V -f /etc/haproxy/haproxy.cfg
 $ haproxy -f /etc/haproxy/haproxy.cfg
 ```
 
-此时HAProxy全部配置完成。余下要做的事项是，在其余两个MySQL服务器中分别添加如下的mysql.user：
+#### 余下事项
+
+此时HAProxy全部配置完成。余下要做的事项是，在其余两个MySQL Read Replicas服务器中分别添加如下的mysql.user：
+
 * haproxy_root@192.168.0.171 - 用于从HAProxy服务器，以root权限访问MySQL服务器。
+
+#### 验证HAProxy成功启动
 
 当如上事项完成，当访问http://192.168.0.171:8100/ ，可以看到如下监控页面：
 ![haproxy](./pix/haproxy.png)
@@ -74,7 +78,7 @@ $ haproxy -f /etc/haproxy/haproxy.cfg
 $ mysql -h 127.0.0.1 -u haproxy_root -p -e "show variables like 'server_id'"
 ```
 
-如果load balance成功，会看到如下两个response，在以roundrobin的方式交替显示：
+如果load balance成功，会看到如下两个response，在以leastconn的方式交替显示：
 
 | Variable_name  | Value |
 |----------------|-------|
@@ -84,26 +88,28 @@ $ mysql -h 127.0.0.1 -u haproxy_root -p -e "show variables like 'server_id'"
 |----------------|-------|
 | server_id      | 3     |
 
+
 ### 怎么配置MySQL所在的服务器
 
-1. 安装mysql-client和mysql-server
+#### 安装mysql-client和mysql-server
 
 ```
 $ apt-get install mysql-client mysql-server mysql-common
 ```
 
-2. 修改/etc/mysql/mysql.cnf，添加如下配置：
+#### 修改/etc/mysql/mysql.cnf，添加如下配置：
 
-    192.168.0.173的server-id是2，192.168.0.174的server-id是3。这样便于在HAProxy验证load balancing的时候，区分不同MySQL数据库。
-
+注意：192.168.0.173的server-id是2，192.168.0.174的server-id是3。这样便于在HAProxy验证load balancing的时候，区分不同的MySQL Read Replicas。
+注意：bind-address设置为IP地址，这样在subnet中（假设是/24 subnet），才可以被其他IP为192.168.0.xxx的服务器访问得到。
 ```
 [mysqld]
 bind-address                    = 192.168.0.173/174
 server-id                       = 2/3
 ```
 
-3. 然后重新启动mysql。
+#### 重新启动MySQL
 
+命令如下：
 ```
 $ service mysql restart
 ```
@@ -126,13 +132,15 @@ $ sudo netstat -plutn | grep -i mysql
 tcp        0      0 192.168.0.173:3306      0.0.0.0:*               LISTEN      19755/mysqld
 ```
 
-4. 最后以默认root/root登录mysql shell：
+#### 添加haproxy_root用户到各个MySQL Read Replicas
+
+以默认的用户名root，密码root登录MySQL Shell：
 
 ```
 $ /usr/bin/mysql -u root -p
 ```
 
-5. 添加haproxy_root@192.168.0.171，到mysql.user：
+添加用户haproxy_root@192.168.0.171，到mysql.user：
 
 ```
 mysql > CREATE USER 'haproxy_root'@'192.168.0.171' IDENTIFIED BY 'root';
@@ -155,7 +163,7 @@ mysql > select user, host from mysql.user;
 
 ### 错误及其修改方法
 
-#### 1. Host is blocked because of many connection errors
+#### Host is blocked because of many connection errors
 
 当在192.168.0.171的mysql-client，验证remote mysql-server的连接时：
 
@@ -169,7 +177,7 @@ mysql -h 192.168.0.173/174 -u haproxy_root -p -e "show variables like 'server_id
 Host '192.168.0.171' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts'
 ```
 
-可以在mysql-server：192.168.0.173和192.168.0.174，做如下操作：
+可以在mysql-server中：192.168.0.173和192.168.0.174，做如下操作：
 
 ```
 $ mysqladmin -u root -p flush-hosts
@@ -183,7 +191,7 @@ mysql > SET PERSIST max_connect_errors=10000;
 mysql > restart;
 ```
 
-#### 2. HAProxy does not forward requests while listening on 本机的3306端口
+#### HAProxy does not forward requests while listening on 本机的3306端口
 
 第一步，当执行如下命令：
 
