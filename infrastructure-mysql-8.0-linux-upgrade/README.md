@@ -1,6 +1,6 @@
 ## MySQL 5.7 Upgrade to MySQL 8.0 on Ubuntu 18.04
 
-### How to install MySQL 8.0 in Ubuntu 18.04
+### How to install MySQL 8.0 on Ubuntu 18.04
 
 #### Check Ubuntu Version
 
@@ -54,7 +54,7 @@ Verify MySQL version, and the sample response is "mysql  Ver 8.0.17 for Linux on
 $ mysql --version
 ```
 
-### How to Uninstall MySQL 5.7 in Ubuntu 18.04
+### How to Uninstall MySQL 5.7 on Ubuntu 18.04
 
 Use apt to uninstall and remove all MySQL packages:
 ```
