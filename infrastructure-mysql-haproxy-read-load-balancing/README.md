@@ -90,7 +90,7 @@ $ mysql -h 127.0.0.1 -u haproxy_root -p -e "show variables like 'server_id'"
 $ apt-get install mysql-client mysql-server mysql-common
 ```
 
-2. 修改/etc/mysql/my.cnf，添加如下配置：
+2. 修改/etc/mysql/mysql.cnf，添加如下配置：
 
     192.168.0.173的server-id是2，192.168.0.174的server-id是3。这样便于在HAProxy验证load balancing的时候，区分不同MySQL数据库。
 
