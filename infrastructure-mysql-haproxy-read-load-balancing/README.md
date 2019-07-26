@@ -23,7 +23,7 @@ $ apt-get install haproxy
 
 2. 修改/etc/haproxy/haproxy.cfg，添加如下配置：
 
-MySQL的load balancing配置如下：
+    2.1 MySQL的load balancing配置如下：
 
 ```
 listen mysql_cluster
@@ -37,7 +37,7 @@ listen mysql_cluster
         server mysql-2 192.168.0.174:3306 weight 50 check port 3306 inter 5000 rise 1 fall 3 maxconn 75
 ```
 
-HTTP的监控配置如下：
+    2.2 HTTP的监控配置如下：
 ```
 listen monitoring
         bind 0.0.0.0:8100
