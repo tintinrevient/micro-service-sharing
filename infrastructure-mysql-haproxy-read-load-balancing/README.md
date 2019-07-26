@@ -29,10 +29,10 @@ listen mysql_cluster
 	mode tcp
 	balance leastconn
 	option tcpka
-    option httpchk
-    option tcp-check
+        option httpchk
+        option tcp-check
 	server mysql-1 192.168.0.173:3306 weight 50 check port 3306 inter 5000 rise 1 fall 3 maxconn 75
-    server mysql-2 192.168.0.174:3306 weight 50 check port 3306 inter 5000 rise 1 fall 3 maxconn 75
+        server mysql-2 192.168.0.174:3306 weight 50 check port 3306 inter 5000 rise 1 fall 3 maxconn 75
 ```
 
 HTTP的监控配置如下：
