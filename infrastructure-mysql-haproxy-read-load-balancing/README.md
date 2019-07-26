@@ -4,7 +4,7 @@
 
 数据库Read的Load balancer架构如下：
 
-![infra](./pix/infra.png)
+![db-cluster](./pix/db-cluster.png)
 
 其中，具体Linux服务器的信息如下：
 * HAProxy - 192.168.0.171
@@ -23,15 +23,16 @@ $ apt-get install haproxy
 
 MySQL的load balancing配置如下：
 
-* 注意：haproxy_check是mysql-1和mysql-2的无需密码登陆的mysql.user，之后会分别加入到如下两个mysql-server的mysql.user中。
 ```
 listen mysql_cluster
-    bind 127.0.0.1:3306
-    mode tcp
-    option mysql-check user haproxy_check
-    balance roundrobin
-    server mysql-1 192.168.0.173:3306 check weight 1
-    server mysql-2 192.168.0.174:3306 check weight 1
+	bind 127.0.0.1:3306
+	mode tcp
+	balance leastconn
+	option tcpka
+    option httpchk
+    option tcp-check
+	server mysql-1 192.168.0.173:3306 weight 50 check port 3306 inter 5000 rise 1 fall 3 maxconn 75
+    server mysql-2 192.168.0.174:3306 weight 50 check port 3306 inter 5000 rise 1 fall 3 maxconn 75
 ```
 
 HTTP的监控配置如下：
@@ -59,22 +60,8 @@ $ haproxy -c -V -f /etc/haproxy/haproxy.cfg
 $ haproxy -f /etc/haproxy/haproxy.cfg
 ```
 
-4. 最后安装mysql-client。此mysql-client会在本机，即127.0.0.1，监听3306端口，如有请求会通过HAProxy，forward到mysql-server: mysql1和mysql2。
-
-```
-$ apt-get install mysql-client
-```
-
-注意：需要在/etc/mysql/my.cnf中设置bind-address为127.0.0.1。具体如下：
-
-```
-[mysqld]
-bind-address = 127.0.0.1
-```
-
-此时HAProxy全部配置完成。余下要做的事项是，在其余两个MySQL服务器中分别添加如下两个mysql.user：
-* haproxy_check@192.168.0.171 - 无密码，用于Health Check
-* haproxy_root@192.168.0.171 - 有密码，用于从HAProxy服务器，以root权限访问MySQL服务器。
+此时HAProxy全部配置完成。余下要做的事项是，在其余两个MySQL服务器中分别添加如下的mysql.user：
+* haproxy_root@192.168.0.171 - 用于从HAProxy服务器，以root权限访问MySQL服务器。
 
 当如上事项完成，当访问http://192.168.0.171:8100/ ，可以看到如下监控页面：
 ![haproxy](./pix/haproxy.png)
@@ -146,14 +133,8 @@ $ /usr/bin/mysql -u root -p
 5. 添加haproxy_root@192.168.0.171，到mysql.user：
 
 ```
-mysql > GRANT ALL PRIVILEGES ON *.* TO 'haproxy_root'@'192.168.0.171' IDENTIFIED BY 'root' WITH GRANT OPTION;
-mysql > FLUSH PRIVILEGES;
-```
-
-6. 添加haproxy_check@192.168.0.171，到mysql.user：
-
-```
-mysql > INSERT INTO mysql.user (Host,User,ssl_cipher,x509_issuer,x509_subject) values ('192.168.0.171','haproxy_check','','','');
+mysql > CREATE USER 'haproxy_root'@'192.168.0.171' IDENTIFIED BY 'root';
+mysql > GRANT ALL PRIVILEGES ON *.* TO 'haproxy_root'@'192.168.0.171' WITH GRANT OPTION;
 mysql > FLUSH PRIVILEGES;
 ```
 
@@ -167,7 +148,6 @@ mysql > select user, host from mysql.user;
 
 | user             | host          |
 |------------------|---------------|
-| haproxy_check    | 192.168.0.171 |
 | haproxy_root     | 192.168.0.171 |
 
 

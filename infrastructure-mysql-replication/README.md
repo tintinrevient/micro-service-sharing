@@ -146,3 +146,6 @@ $ rm -rf /etc/mysql
 * https://help.cloud66.com/node/how-to-guides/databases/shells/uninstall-mysql.html
 * https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 * https://www.thegeekdiary.com/mysql-8-0-persisted-variables/
+* https://dev.mysql.com/doc/refman/8.0/en/replication.html
+* https://dev.mysql.com/doc/refman/8.0/en/replication-solutions.html
+* https://dev.mysql.com/doc/refman/8.0/en/replication-implementation.html
