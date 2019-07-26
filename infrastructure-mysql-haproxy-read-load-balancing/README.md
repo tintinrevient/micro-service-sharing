@@ -7,9 +7,11 @@
 ![db-cluster](./pix/db-cluster.png)
 
 其中，具体Linux服务器的信息如下：
-* HAProxy - 192.168.0.171
-* MySQL-1 - 192.168.0.173
-* MySQL-2 - 192.168.0.174
+* Load balancer:
+    * HAProxy - 192.168.0.171
+* MySQL Replicas
+    * MySQL-1 - 192.168.0.173
+    * MySQL-2 - 192.168.0.174
 
 ### 怎么配置HAProxy所在的服务器
 
