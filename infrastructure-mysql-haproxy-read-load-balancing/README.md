@@ -87,7 +87,7 @@ $ mysql -h 127.0.0.1 -u haproxy_root -p -e "show variables like 'server_id'"
 1. 安装mysql-client和mysql-server
 
 ```
-$ apt-get install mysql-client mysql-server
+$ apt-get install mysql-client mysql-server mysql-common
 ```
 
 2. 修改/etc/mysql/my.cnf，添加如下配置：
