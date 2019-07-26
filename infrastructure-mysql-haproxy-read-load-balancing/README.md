@@ -100,6 +100,7 @@ $ apt-get install mysql-client mysql-server mysql-common
 #### 修改/etc/mysql/mysql.cnf，添加如下配置：
 
 注意：192.168.0.173的server-id是2，192.168.0.174的server-id是3。这样便于在HAProxy验证load balancing的时候，区分不同的MySQL Read Replicas。
+
 注意：bind-address设置为IP地址，这样在subnet中（假设是/24 subnet），才可以被其他IP为192.168.0.xxx的服务器访问得到。
 ```
 [mysqld]
