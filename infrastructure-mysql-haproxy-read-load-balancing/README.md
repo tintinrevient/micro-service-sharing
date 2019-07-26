@@ -2,7 +2,7 @@
 
 ### 架构
 
-数据库Read的Load balancer架构如下：
+数据库Read Replica的Load balancer架构如下：
 
 ![db-cluster](./pix/db-cluster.png)
 
