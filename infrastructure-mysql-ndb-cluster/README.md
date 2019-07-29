@@ -3,7 +3,7 @@
 ### NDB Cluster 架构图
 ![multi-comp-1](./pix/multi-comp-1.png)
 
-### 如何搭建InnoDB Cluster
+### 如何搭建NDB Cluster
 
 #### 服务器总览
 
