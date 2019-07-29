@@ -1,0 +1,8 @@
+[mysqld]
+# Options for mysqld process:
+ndbcluster                      # run NDB storage engine
+bind-address=192.168.0.178
+
+[mysql_cluster]
+# Options for NDB Cluster processes:
+ndb-connectstring=192.168.0.178  # location of management server
