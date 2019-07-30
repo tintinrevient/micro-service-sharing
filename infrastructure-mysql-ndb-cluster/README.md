@@ -160,6 +160,9 @@ ndb_mgm > show
 如下是输出结果，也就是整个集群的状态：
 ![ndb_mgm](./pix/ndb_mgm_2.png)
 
+如下是整个集群，memory usage的状态：
+![all-report-memory-usage](./pix/all-report-memory-usage.png)
+
 也可以登录MySQL Shell，查看Cluster的状态：
 ```
 ~ mysql -u root -p
@@ -168,6 +171,16 @@ mysql > SHOW ENGINE NDB STATUS \G
 
 如下是输出结果：
 ![show-engine-ndb-status](./pix/show-engine-ndb-status.png)
+
+注意：在NDB Cluster创建Table时，需要加如下参数：
+```
+create table user (id bigint not null auto_increment, 
+fullname varchar(255), 
+password varchar(255), 
+roles varchar(255), 
+username varchar(255), 
+primary key (id)) engine=ndb partition by key(id);
+```
 
 最后在Spring Boot的应用中，application.yml作如下配置，连接到192.168.0.178的MySQL Server：
 ```
@@ -248,6 +261,7 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 * https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-programs-ndb-mgmd.html
 * https://www.tusacentral.net/joomla/index.php/mysql-blogs/146-mysql-ndb-a-mysql-with-galera-why-we-should-not-compare-them.html
 * https://www.slideshare.net/Wagnerbianchi/mysql-cluster-basics
+* https://www.percona.com/live/17/sites/default/files/slides/MySQL%20Cluster%20%28NDB%29%20-%20Best%20Practices%20APR17%20%281%29.pdf
 * https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
 * https://mirrors.sohu.com/mysql/MySQL-Cluster-7.6/
 * https://www.digitalocean.com/community/tutorials/how-to-configure-a-galera-cluster-with-mysql-5-6-on-ubuntu-16-04
