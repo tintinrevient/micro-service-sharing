@@ -184,6 +184,11 @@ $ mysql -h 192.168.0.178 -u root -p -e "select @@hostname"
 
 ##### 下载并安装相应的程序
 
+如下是：libclass-methodmaker-perl。mysql-cluster-community-data-node依赖这个程序。
+```
+~ apt-get install libclass-methodmaker-perl
+```
+
 如下是：mysql-cluster-community-data-node，包含ndbd。
 ```
 ~ wget https://mirrors.sohu.com/mysql/MySQL-Cluster-7.6/mysql-cluster-community-data-node_7.6.10-1ubuntu18.04_amd64.deb
@@ -223,7 +228,7 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 
 注意如下几点：
 1. Partitioning分为Vertical Partitioning和Horizontal Partitioning。在MySQL中支持的是Horizontal Partitioning，即一个Table以Row划分。如图：一个Table被划分为4个Partition。
-2. Partition的数量和Data Node的数量相等。如图：有4个Data Node，即有4个Partition。
+2. Partition的数量和Data Node的数量相等 (ndbd的LDM threads数量为1，所以Partition = Data Nodes * 1)。如图：有4个Data Node，即有4个Partition。
 3. Node Group需要同时正常运行，才能获取所有的Table数据，保证数据完备性。如图：Node Group 0和Node Group 1需要保证都是正常运行的。
 4. 在Node Group中，Data Node互为Replica。如图：Partition 1保存在NDBD 1上，Partition 1的Replica保存在NDBD 2上；与此相反，Partition 3保存在NDBD 2上，Partition 3的Replica保存在NDBD 1上。这样一来，一旦某个Data Node宕机，另一个Data Node都能backup。
 5. Partitioning实现了Parallel Execution。对于一个query或transaction，可以在多个Data Node上同时执行，减少了response time和增加了transaction per second。
@@ -231,8 +236,9 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 ### Reference
 
 * https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html
+* https://dev.mysql.com/doc/mysql-cluster-excerpt/5.7/en/mysql-cluster-nodes-groups.html
 * https://www.tusacentral.net/joomla/index.php/mysql-blogs/146-mysql-ndb-a-mysql-with-galera-why-we-should-not-compare-them.html
+* https://www.slideshare.net/Wagnerbianchi/mysql-cluster-basics
 * https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
 * https://mirrors.sohu.com/mysql/MySQL-Cluster-7.6/
-* https://www.slideshare.net/Wagnerbianchi/mysql-cluster-basics
 * https://www.digitalocean.com/community/tutorials/how-to-configure-a-galera-cluster-with-mysql-5-6-on-ubuntu-16-04
