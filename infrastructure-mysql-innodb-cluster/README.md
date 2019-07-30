@@ -184,6 +184,16 @@ $ mysql -h "127.0.0.1" -P 6447 -u root -p -e "select @@hostname"
 +------------+
 ```
 
+### Apache Benchmarking 测试结果
+
+用如下命令，测试request数量为10000，并发为1000，connection pool size为20的情况下 (read 10 + write 10)，read的性能：
+```
+$ ab -n 10000 -c 1000 http://localhost:8080/user/1
+```
+
+测试结果如下：
+![innodb-cluster-master-1-slave-2-cp-20-2](./pix/innodb-cluster-master-1-slave-2-cp-20-2.png)
+
 ### Reference
 
 * https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster-compared.html
