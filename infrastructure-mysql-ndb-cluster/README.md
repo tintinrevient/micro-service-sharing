@@ -215,6 +215,18 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 2019-07-29 11:16:20 [ndbd] INFO     -- Angel allocated nodeid: 2
 ```
 
+### 实际生产环境的架构
+
+![cluster-partitioning-1](./pix/cluster-partitioning-1.png)
+
+![cluster-partitioning-2](./pix/cluster-partitioning-2.png)
+
+注意如下几点：
+1. Partitioning分为Vertical Partitioning和Horizontal Partitioning。在MySQL中支持的是Horizontal Partitioning，即一个Table以Row划分。如图：一个Table被划分为4个Partition。
+2. Partition的数量和Data Node的数量相等。如图：有4个Data Node，即有4个Partition。
+3. Node Group需要同时正常运行，才能获取所有的Table数据，保证数据完备性。如图：Node Group 0和Node Group 1需要保证都是正常运行的。
+4. 在Node Group中，Data Node互为Replica。如图：Partition 1保存在NDBD 1上，Partition 1的Replica保存在NDBD 2上；与此相反，Partition 3保存在NDBD 2上，Partition 3的Replica保存在NDBD 1上。这样一来，一旦某个Data Node宕机，另一个Data Node都能backup。
+
 ### Reference
 
 * https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html
