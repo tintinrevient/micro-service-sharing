@@ -226,6 +226,7 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 2. Partition的数量和Data Node的数量相等。如图：有4个Data Node，即有4个Partition。
 3. Node Group需要同时正常运行，才能获取所有的Table数据，保证数据完备性。如图：Node Group 0和Node Group 1需要保证都是正常运行的。
 4. 在Node Group中，Data Node互为Replica。如图：Partition 1保存在NDBD 1上，Partition 1的Replica保存在NDBD 2上；与此相反，Partition 3保存在NDBD 2上，Partition 3的Replica保存在NDBD 1上。这样一来，一旦某个Data Node宕机，另一个Data Node都能backup。
+5. Partitioning实现了Parallel Execution。对于一个query或transaction，可以在多个Data Node上同时执行，减少了response time和增加了transaction per second。
 
 ### Reference
 
