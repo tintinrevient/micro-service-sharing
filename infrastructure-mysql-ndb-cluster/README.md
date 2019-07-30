@@ -134,6 +134,14 @@ MySQL Cluster Management Server mysql-5.7.26 ndb-7.6.10
 2019-07-29 11:16:20 [MgmtSrvr] INFO     -- Sucessfully created config directory
 ```
 
+当更新config.ini，增加节点后重新启动NDB Cluster：
+```
+~ ndb_mgm
+> shutdown
+
+~ ndb_mgmd --reload -f /var/lib/mysql-cluster/config.ini
+```
+
 启动MySQL Server
 ```
 ~ service mysql start
@@ -237,6 +245,7 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 
 * https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html
 * https://dev.mysql.com/doc/mysql-cluster-excerpt/5.7/en/mysql-cluster-nodes-groups.html
+* https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-programs-ndb-mgmd.html
 * https://www.tusacentral.net/joomla/index.php/mysql-blogs/146-mysql-ndb-a-mysql-with-galera-why-we-should-not-compare-them.html
 * https://www.slideshare.net/Wagnerbianchi/mysql-cluster-basics
 * https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
