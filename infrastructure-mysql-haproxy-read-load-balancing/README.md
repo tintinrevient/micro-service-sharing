@@ -222,6 +222,18 @@ $ mysql -h 192.168.0.171 -u haproxy_root -p -e "show variables like 'server_id'"
 * option mysql-check是layer 7的load balancing，而layer 7 load balancing是application级别的。此时，mysql-client并没有启动。
 * option tcp-check是layer 4的load balancing，而layer 4 load balancing不需要mysql-client的应用被启动。
 
+
+### Apache Benchmarking 测试结果
+
+用如下命令，测试request数量为10000，并发为1000，connection pool size为20的情况下 (read 10 + write 10)，read的性能：
+```
+$ ab -n 10000 -c 1000 http://localhost:8080/user/1
+```
+
+测试结果如下：
+![haproxy-mysql-master-1-slaves-2-cp-20-1](./pix/haproxy-mysql-master-1-slaves-2-cp-20-1.png)
+
+
 ### Reference
 
 * https://www.digitalocean.com/community/tutorials/how-to-use-haproxy-to-set-up-mysql-load-balancing--3
