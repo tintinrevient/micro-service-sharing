@@ -1,4 +1,4 @@
-## MySQL Generic
+## MySQL Cluster Comparison
 
 ### Types of Storage Engines
 

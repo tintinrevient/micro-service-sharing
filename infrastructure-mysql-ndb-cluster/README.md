@@ -11,6 +11,7 @@
 * 192.168.0.175：包含Data Node 2 (ndbd)
 * 192.168.0.176：包含Data Node 3 (ndbd)
 * 192.168.0.177：包含Data Node 4 (ndbd)
+* 192.168.0.179：包含Data Node 5 (ndbd)
 
 #### 如何搭建 NDB Management Server, NDB Management Client和MySQL Server
 
@@ -77,32 +78,33 @@ ii  mysql-common                              7.6.10-1ubuntu18.04               
 config.ini配置如下：
 ```
 [ndbd default]
-# Options affecting ndbd processes on all data nodes:
-NoOfReplicas=3  # Number of replicas
+NoOfReplicas=2
 
-[ndbd]
-hostname=192.168.0.175 # Hostname/IP of the first data node
-NodeId=2            # Node ID for this data node
-datadir=/usr/local/mysql/data   # Remote directory for the data files
-
-[ndbd]
-hostname=192.168.0.176 # Hostname/IP of the second data node
-NodeId=3            # Node ID for this data node
-datadir=/usr/local/mysql/data   # Remote directory for the data files
-
-[ndbd]
-hostname=192.168.0.177 # Hostname/IP of the second data node
-NodeId=4            # Node ID for this data node
-datadir=/usr/local/mysql/data   # Remote directory for the data files
-
+[mysqld  default]
+[ndb_mgmd default]
+[tcp default]
 [ndb_mgmd]
-# Management process options:
-hostname=192.168.0.178 # Hostname of the manager
-datadir=/var/lib/mysql-cluster  # Directory for the log files
+HostName=192.168.0.178
+DataDir=/var/lib/mysql-cluster
+
+[ndbd]
+HostName=192.168.0.175
+DataDir=/usr/local/mysql/data
+
+[ndbd]
+HostName=192.168.0.176
+DataDir=/usr/local/mysql/data
+
+[ndbd]
+HostName=192.168.0.177
+DataDir=/usr/local/mysql/data
+
+[ndbd]
+HostName=192.168.0.179
+DataDir=/usr/local/mysql/data
 
 [mysqld]
-# SQL node options:
-hostname=192.168.0.178 # In our case the MySQL server/client is on the same Droplet as the cluster manager
+HostName=192.168.0.178
 ```
 
 编辑mysqld的配置文件mysqld.cnf：
