@@ -179,6 +179,7 @@ mysql > select @@gtid_executed;
 ```
 
 结果如下：
+
 ![slave-global-gtid-executed](./pix/slave-global-gtid-executed.png)
 
 ### Reference
