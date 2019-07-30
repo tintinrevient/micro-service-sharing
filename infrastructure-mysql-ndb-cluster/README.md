@@ -254,6 +254,16 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 4. 在Node Group中，Data Node互为Replica。如图：Partition 1保存在NDBD 1上，Partition 1的Replica保存在NDBD 2上；与此相反，Partition 3保存在NDBD 2上，Partition 3的Replica保存在NDBD 1上。这样一来，一旦某个Data Node宕机，另一个Data Node都能backup。
 5. Partitioning实现了Parallel Execution。对于一个query或transaction，可以在多个Data Node上同时执行，减少了response time和增加了transaction per second。
 
+### Apache Benchmarking 测试结果
+
+用如下命令，测试request数量为10000，并发为1000，connection pool size为20的情况下，read的性能：
+```
+$ ab -n 10000 -c 1000 http://localhost:8080/user/1
+```
+
+测试结果如下：
+![ndb-cluster-cp-20](./pix/ndb-cluster-cp-20.png)
+
 ### Reference
 
 * https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html
