@@ -58,6 +58,8 @@ mysql > select @@binlog_format;
 
 ### Replication的实现
 
+Replication的实现方式如下：
+
 * **Binlog dump thread.**  The master creates a thread to send the binary log contents to a slave when the slave connects. This thread can be identified in the output of SHOW PROCESSLIST on the master as the Binlog Dump thread. 
 
     The binary log dump thread acquires a lock on the master's binary log for reading each event that is to be sent to the slave. As soon as the event has been read, the lock is released, even before the event is sent to the slave.
