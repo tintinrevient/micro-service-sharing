@@ -67,7 +67,7 @@ ii  mysql-common                              7.6.10-1ubuntu18.04               
 
 ##### 添加配置文件并启动
 
-执行如下命令，创建相应文件夹和文件，之后编辑ndb_mgmd的配置文件：config.ini文件。
+执行如下命令，创建相应文件夹和文件，之后编辑ndb_mgmd的配置文件：config.ini文件 (这是Global配置)。
 ```
 ~ mkdir /var/lib/mysql-cluster/
 ~ cd /var/lib/mysql-cluster
@@ -150,7 +150,7 @@ ndb_mgm > show
 ```
 
 如下是输出结果，也就是整个集群的状态：
-![ndb_mgm](./pix/ndb_mgm.png)
+![ndb_mgm](./pix/ndb_mgm_2.png)
 
 也可以登录MySQL Shell，查看Cluster的状态：
 ```
@@ -192,7 +192,7 @@ $ mysql -h 192.168.0.178 -u root -p -e "select @@hostname"
 
 ##### 添加配置文件并启动
 
-编辑ndbd的配置文件my.cnf：
+编辑ndbd的配置文件my.cnf (这是Local配置)。
 ```
 ~ vim /etc/my.cnf
 ```
@@ -221,4 +221,5 @@ ndb-connectstring=192.168.0.178  # location of cluster manager
 * https://www.tusacentral.net/joomla/index.php/mysql-blogs/146-mysql-ndb-a-mysql-with-galera-why-we-should-not-compare-them.html
 * https://www.digitalocean.com/community/tutorials/how-to-create-a-multi-node-mysql-cluster-on-ubuntu-18-04
 * https://mirrors.sohu.com/mysql/MySQL-Cluster-7.6/
-
+* https://www.slideshare.net/Wagnerbianchi/mysql-cluster-basics
+* https://www.digitalocean.com/community/tutorials/how-to-configure-a-galera-cluster-with-mysql-5-6-on-ubuntu-16-04
