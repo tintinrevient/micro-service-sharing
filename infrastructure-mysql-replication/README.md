@@ -38,7 +38,7 @@ master的binary log记录events，有其不同的formats：
 3. a mix of statement-based and row-based binary logging
 
 注意：
-* 默认的format为row-based binary logging和row-based replication。InnoDB使用的是ROW。
+* 默认的format为row-based binary logging和row-based replication。InnoDB Cluster使用的是ROW。
 * MySQL NDB Cluster 8.0使用的是MIXED
 
 可以通过如下命令，查看master和slaves的replication format：
