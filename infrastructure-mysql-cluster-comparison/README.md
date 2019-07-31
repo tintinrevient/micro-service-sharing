@@ -111,7 +111,7 @@ Primary-Secondary Replication的特征是：
 * 有一个primary(master)和多个secondaries(slaves)
 * master执行transaction并且commit， 数据之后会asynchronous同步到slaves
 * slaves会通过statement-based replication或者row-based replication同步数据
-* 这是shared-nothing架构，所有的服务器 (master和slaves) 都会持有相同的数据.
+* 所有的服务器 (master和slaves) 都会持有相同的数据.
 
 ![async-replication-diagram](./pix/async-replication-diagram.png)
 
@@ -138,7 +138,7 @@ Group Replication的特征是：
 * **[NDB (also known as NDBCLUSTER):](https://dev.mysql.com/doc/refman/5.6/en/mysql-cluster.html)** This clustered database engine is particularly suited for applications that require the highest possible degree of uptime and availability.
 
 
-#### Differences Between the NDB and InnoDB Storage Engines
+#### Differences Between InnoDB and NDB Storage Engines
 
 | Feature                                                          | InnoDB (MySQL 8.0)                                                                            | NDB 8.0                                                                                                                                                                        |
 |------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -167,6 +167,10 @@ Group Replication的特征是：
 | Online Upgrades                                                  | Yes (using replication)                                                                       | Yes                                                                                                                                                                            |
 | Online Schema Modifications                                      | Yes, as part of MySQL 8.0                                                                     | Yes                                                                                                                                                                            |
 
+
+### Cluster选型
+
+![cluster-comparison](./pix/cluster-comparison.png)
 
 
 ### MySQL Shell的有用命令
@@ -400,3 +404,5 @@ mysql > SHOW STATUS LIKE 'Table%';
 * https://dev.mysql.com/doc/refman/8.0/en/savepoint.html
 * https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html
 * https://dev.mysql.com/doc/refman/5.6/en/storage-engine-setting.html
+* https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-compared.html
+* https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster-limitations.html
