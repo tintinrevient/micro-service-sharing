@@ -12,8 +12,9 @@ Isolation level的划分如下图：
 ![isolation-level](./pix/isolation-level-1.png)
 
 注意：
-* InnoDB storage engine默认支持的isolation level是REPEATABLE READ。
+* InnoDB storage engine支持所有的isolation level，其中默认的是REPEATABLE READ。
 * NDBCLUSTER storage engine只支持READ COMMITTED。
+* Snapshot和Serializable是locking reads，其余的不是。
 
 
 ### Storage Engines
