@@ -197,6 +197,20 @@ $ ab -n 10000 -c 1000 http://localhost:8080/user/1
 测试结果如下：
 ![innodb-cluster-master-1-slave-2-cp-20-2](./pix/innodb-cluster-master-1-slave-2-cp-20-2.png)
 
+
+当用sysbench直接测试MySQL InnoDB engine read-only性能时:
+```
+$ sysbench /usr/local/Cellar/sysbench/1.0.17/share/sysbench/oltp_read_only.lua --threads=8 --mysql-host=127.0.0.1 --mysql-user=root --mysql-password=root --mysql-port=3306 --tables=10 --table-size=1000000 prepare
+
+$ sysbench /usr/local/Cellar/sysbench/1.0.17/share/sysbench/oltp_read_only.lua --threads=16 --events=0 --time=300 --mysql-host=127.0.0.1 --mysql-user=root --mysql-password=root --mysql-port=3306 --tables=10 --table-size=1000000 --range_selects=off --db-ps-mode=disable --report-interval=1 run
+
+$ sysbench /usr/local/Cellar/sysbench/1.0.17/share/sysbench/oltp_read_only.lua --threads=16 --events=0 --time=300 --mysql-host=127.0.0.1 --mysql-user=root --mysql-password=root --mysql-port=3306 --tables=10 --table-size=1000000 --range_selects=off --db-ps-mode=disable --report-interval=1 cleanup
+
+```
+
+如下是测试结果：
+![mysql-innodb-read-only](./pix/mysql-innodb-read-only.png)
+
 ### Reference
 
 * https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster-compared.html
