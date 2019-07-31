@@ -2,8 +2,10 @@
 
 ### MySQL Server Architecture
 
+Overview如下：
 ![overview-1](./pix/overview-1.png)
 
+细节图如下：
 ![overview-2](./pix/overview-2.png)
 
 
