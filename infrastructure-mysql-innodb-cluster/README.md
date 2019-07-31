@@ -3,6 +3,9 @@
 ### InnoDB Cluster 架构图
 ![innodb_cluster_overview](./pix/innodb_cluster_overview.png)
 
+可以看出InnoDB Cluster能很好的契合Database Read-Intensive的架构，如下图：
+![read-intensive](./pix/read-intensive.png)
+
 ### 如何搭建InnoDB Cluster
 
 #### 服务器总览
