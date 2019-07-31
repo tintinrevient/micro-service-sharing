@@ -89,9 +89,9 @@ Internal Locking Methods分为如下两种大类：
 
 InnoDB默认使用[row-level locking](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_row_lock)，支持多session同时写操作。适合于多用户、高并发的OLTP应用。
 * 对于单个Table的同时写操作，为防止deadlock，在transaction开始前，需要先锁定需要改写的rows，statement是"**SELECT ... FOR UPDATE**"，即Record Locks。
-* 对于多个Tables的同时写操作，为防止deadlock，需要每个transaction的statement保持**相同**的操作表顺序。
+* 对于多个Tables的同时写操作，为防止deadlock，需要每个transaction的statement保持**相同**的操作table顺序。
 
-deadlock不产生error，只会影响performance。因为，InnoDB自动发现deadlock。其中，相关设置参数：
+Deadlock不产生error，只会影响performance。因为，InnoDB自动发现deadlock。其中，相关设置参数：
 * innodb_lock_wait_timeout 
 * innodb_deadlock_detect
 
