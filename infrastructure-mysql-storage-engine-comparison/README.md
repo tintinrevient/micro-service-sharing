@@ -1,4 +1,4 @@
-## MySQL Cluster Comparison
+## MySQL Storage Engine Comparison
 
 ### MySQL Server Architecture
 
@@ -9,6 +9,19 @@ Overview如下：
 细节图如下：
 
 ![overview-2](./pix/overview-2.png)
+
+### 影响Storage Engine选型的相关因素
+影响Storage Engine选型的相关因素包含以下几项，之后的段落会一一说明，下面会先进结论。
+
+* Transaction Isolation Level
+* Concurrency Control
+* Internal Locking Methods
+* Replication
+
+结论如下：
+
+* 比较的Storage Engines包含：MyISAM，InnoDB和NDBCLUSTER。结论是**推荐选用InnoDB，这是目前在权衡高并发，死锁，性能和以后集群的情况下最优的选择**。
+* 注意在目前的Spring Boot项目中，在涉及到创建/修改table时，需要自己选择storage engine，比如在SQL语句后添加“engine=innodb”，否则会默认选用MyISAM。
 
 
 ### Transaction Isolation Level
