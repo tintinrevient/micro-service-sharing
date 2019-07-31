@@ -181,7 +181,7 @@ Group Replication的特征是：
 | Online Schema Modifications                                      | Yes, as part of MySQL 8.0                                                                     | Yes                                                                                                                                                                            |
 
 
-### Cluster选型
+#### Storage Engines的应用场景
 
 ![cluster-comparison](./pix/cluster-comparison.png)
 
