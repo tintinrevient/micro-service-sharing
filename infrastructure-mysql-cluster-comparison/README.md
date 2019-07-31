@@ -56,6 +56,34 @@ Isolation level的划分如下图：
 | Online Schema Modifications                                      | Yes, as part of MySQL 8.0                                                                     | Yes                                                                                                                                                                            |
 
 
+
+### Replication
+
+#### Primary-Secondary Replication
+
+Primary-Secondary Replication的特征是：
+* 有一个primary(master)和多个secondaries(slaves)
+* master执行transaction并且commit， 数据之后会asynchronous同步到slaves
+* slaves会通过statement-based replication或者row-based replication同步数据
+* 这是shared-nothing架构，所有的服务器 (master和slaves) 都会持有相同的数据.
+
+![async-replication-diagram](./pix/async-replication-diagram.png)
+
+还存在一种semisynchronous replication，其特征是：
+* master在commit前会等待，直到所有slaves确认收到transaction
+
+![semisync-replication-diagram](./pix/semisync-replication-diagram.png)
+
+#### Group Replication
+
+Group Replication的特征是：
+* eventual consistency - 当incoming traffic降下来时，所有的group member最终有相同的数据
+* 其中的consensus算法是基于Paxos：https://en.wikipedia.org/wiki/Paxos_(computer_science)
+
+![gr-replication-diagram](./pix/gr-replication-diagram.png)
+
+
+
 ### MySQL Shell的有用命令
 
 #### 查看Binary Log
