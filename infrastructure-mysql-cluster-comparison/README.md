@@ -19,8 +19,8 @@ Isolation level的划分如下图：
 
 ### Concurrency Control
 Concurrency Control分为如下两种大类：
-1. Lock-Based Concurrency Control (LBCC)
-2. Multi-Version Concurrency Control (MVCC)
+1. Lock-Based Concurrency Control (LBCC) - 悲观锁
+2. Multi-Version Concurrency Control (MVCC) - 乐观锁
 
 MVCC是通过在每行记录后面保存两个隐藏的列来实现的。这两个列，一个保存了行的创建时间，一个保存行的过期时间（或删除时间）。当然存储的并不是实际的时间值，而是系统版本号（system version number)。每开始一个新的事务，系统版本号都会自动递增。事务开始时刻的系统版本号会作为事务的版本号，用来和查询到的每行记录的版本号进行比较。
 * **SELECT：** 
