@@ -14,7 +14,7 @@ Isolation level的划分如下图：
 注意：
 * InnoDB storage engine支持所有的isolation level，其中默认的是REPEATABLE READ。
 * NDBCLUSTER storage engine只支持READ COMMITTED。
-* Snapshot和Serializable是locking reads，其余的不是。
+* Snapshot和Serializable是locking reads，其余的是nonlocking reads。
 
 
 ### Storage Engines
