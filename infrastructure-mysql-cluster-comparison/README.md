@@ -2,7 +2,10 @@
 
 ### MySQL Server Architecture
 
-![overview](./pix/overview.png)
+![overview-1](./pix/overview-1.png)
+
+![overview-2](./pix/overview-2.png)
+
 
 ### Transaction Isolation Level
 
