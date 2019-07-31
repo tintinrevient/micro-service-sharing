@@ -3,6 +3,8 @@
 ### NDB Cluster 架构图
 ![multi-comp-1](./pix/multi-comp-1.png)
 
+![ndb_api](./pix/ndb_api.png)
+
 ### 如何搭建NDB Cluster
 
 #### 服务器总览
