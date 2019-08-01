@@ -290,6 +290,8 @@ possible_keys: PRIMARY,FK_a2nlvqyqvobj3bqb1wkxlx1ls
 3 rows in set (0.01 sec)
 ```
 
+#### After - Query 1的查询结果
+
 最后执行一遍如上修改过的查询语句，结果如下：
 * 查询时间从7.52秒，下降到0.33秒
 * 结果集保持不变
