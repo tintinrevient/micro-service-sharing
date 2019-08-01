@@ -325,3 +325,8 @@ possible_keys: PRIMARY,FK_a2nlvqyqvobj3bqb1wkxlx1ls
 21 rows in set (0.33 sec)
 
 ```
+
+### Reference
+
+* https://stackoverflow.com/questions/17113149/what-is-the-difference-between-mysqls-create-index-and-alter-add-index
+* https://www.sitepoint.com/using-explain-to-write-better-mysql-queries/
