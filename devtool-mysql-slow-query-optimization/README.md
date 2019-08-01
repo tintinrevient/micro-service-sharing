@@ -7,7 +7,9 @@
 pt-query-digest $ ./pt-query-digest ./log/db-slow.log
 ```
 
-我们会在terminal得到一份报告，报告会包含top20的slow query分析。下面是部分的分析报告：
+我们会在terminal中得到一份报告，报告会包含top20的slow query分析，点此阅览：[db-slow-analysis.log](./log/db-slow-analysis.log)
+
+下面是部分的分析报告（overview + query 1的详细分析）：
 
 * 可以看到top20的queries中，有11个query的执行时间大于3s、直到最大的93秒。
 
