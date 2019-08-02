@@ -478,7 +478,7 @@ mysql > alter table table-name add key (column-name-1), add key (column-name-2);
 
 方式二：
 ```
-mysql > create index index-name table-name(column-name);
+mysql > create index index-name on table-name(column-name);
 ```
 
 删除索引：
