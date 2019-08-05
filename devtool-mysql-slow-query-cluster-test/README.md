@@ -38,6 +38,53 @@ CREATE TABLE `textuserss` (
 
 在导入NDB集群的时候，没有出现任何问题。
 
+值得注意的是，在查看导入到NDB集群中的table的情况时：
+```
+mysql > show table status where name='aw_endorse_business';
+```
+
+每个table的storage engine还是保持InnoDB不变：
+```
++---------------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-----------------+----------+----------------+---------+
+| Name                | Engine | Version | Row_format | Rows | Avg_row_length | Data_length | Max_data_length | Index_length | Data_free | Auto_increment | Create_time         | Update_time         | Check_time | Collation       | Checksum | Create_options | Comment |
++---------------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-----------------+----------+----------------+---------+
+| aw_endorse_business | InnoDB |      10 | Dynamic    |  311 |            421 |      131072 |               0 |       278528 |         0 |           NULL | 2019-08-05 06:03:44 | 2019-08-05 06:03:43 | NULL       | utf8_general_ci |     NULL |                |         |
++---------------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-----------------+----------+----------------+---------+
+```
+
+当改变其storage engine到NDBCLUSTER时：
+```
+mysql > alter table aw_endorse_business engine=ndbcluster partition by key(id);
+```
+
+由于如下外键原因，无法使用NDB引擎。因此在综合执法项目中，如果需要用集群，请使用InnoDB Cluster。
+```
+ERROR 1217 (23000): Cannot delete or update a parent row: a foreign key constraint fails
+```
+
+最后，检查每个table在data node的partition情况，可以执行如下命令：
+```
+mysql> explain partitions select * from user\G;
+```
+
+如下是返回结果：
+```
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: user
+   partitions: p0,p1,p2,p3
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 2
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 2 warnings (0.00 sec)
+```
+
 ### 查询时间测试
 
 在Slow Query里，query 1的执行时间是7.52秒。具体情况，参见 - [MySQL Slow Query Optimization](https://github.com/tintinrevient/micro-service-sharing/tree/master/devtool-mysql-slow-query-optimization)
