@@ -6,9 +6,9 @@
 
 1. 安装并启动Node Exporter，这会把服务器metrics曝露成Prometheus Format，命令如下：
 ```
-$ wget https://github.com/prometheus/pushgateway/releases/download/v0.8.0/pushgateway-0.8.0.linux-amd64.tar.gz
-$ tar xvfz pushgateway-0.8.0.linux-amd64.tar.gz
-$ cd pushgateway-0.8.0.linux-amd64
+$ wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
+$ tar -xvzf node_exporter-0.18.1.linux-amd64.tar.gz
+$ cd node_exporter-0.18.1.linux-amd64
 $ ./node_exporter
 ```
 
@@ -50,3 +50,9 @@ make install:
 gcc install:
     apt-get install gcc
 ```
+
+### Reference:
+
+* https://prometheus.io/docs/guides/node-exporter/
+* https://github.com/prometheus/node_exporter
+* https://github.com/prometheus/node_exporter/releases
