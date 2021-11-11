@@ -229,6 +229,12 @@ Run the application:
 $ hadoop jar wc.jar WordCount /input /output
 ```
 
+Get Hadoop classpath:
+```bash
+$ export HADOOP_CLASSPATH=$(hadoop classpath)
+$ echo $HADOOP_CLASSPATH
+```
+
 ## References
 * https://bigtop.apache.org/index.html
 * https://www.cloudera.com/products/open-source/apache-hadoop.html
@@ -236,3 +242,4 @@ $ hadoop jar wc.jar WordCount /input /output
 * https://stackoverflow.com/questions/62087423/hadoop-permission-denied-publickey-password-keyboard-interactive
 * https://ashwin.cloud/blog/single-node-cluster-mac/
 * https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html
+* https://stackoverflow.com/questions/50927577/could-not-find-or-load-main-class-org-apache-hadoop-mapreduce-v2-app-mrappmaster
