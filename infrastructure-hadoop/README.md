@@ -217,7 +217,7 @@ $ jar cf wc.jar WordCount*.class
 Add the input files to HDFS:
 ```bash
 $ hadoop fs -mkdir /input
-$ hadoop fs -put ./input/file*.txt /input
+$ hadoop fs -put ./data/file*.txt /input
 
 $ hadoop fs -ls /
 $ hadoop fs -ls /input
