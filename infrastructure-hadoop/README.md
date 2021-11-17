@@ -289,3 +289,4 @@ $ telnet localhost 44444
 * https://stackoverflow.com/questions/50927577/could-not-find-or-load-main-class-org-apache-hadoop-mapreduce-v2-app-mrappmaster
 * https://stackoverflow.com/questions/52036482/yarn-could-not-find-or-load-main-class-org-apache-hadoop-mapreduce-v2-app-mrappm
 * https://stackoverflow.com/questions/23329719/could-not-delete-files-from-dfs-as-safe-mode-is-on
+* https://flume.apache.org/FlumeUserGuide.html
