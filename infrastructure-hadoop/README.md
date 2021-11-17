@@ -183,6 +183,8 @@ $ hdfs namenode -format
 Start the Hadoop daemons with scrips - $HADOOP_HOME/sbin
 ```bash
 $ start-all.sh
+
+$ hdfs --daemon start datanode
 ```
 
 Verify the cluster is up.
@@ -202,6 +204,8 @@ Check Hadoop health - http://localhost:9870/dfshealth.html#tab-overview
 Check Yarn resource manager - http://localhost:8088/cluster
 
 ## Example
+
+### WordCount
 
 Assuming environment variables are set as follows:
 ```bash
@@ -233,6 +237,13 @@ Get Hadoop classpath:
 ```bash
 $ export HADOOP_CLASSPATH=$(hadoop classpath)
 $ echo $HADOOP_CLASSPATH
+```
+
+### Apache Flume
+
+Start the agent of Flume with scrips - $FLUME_HOME
+```bash
+$ flume-ng agent --conf ./conf/ --conf-file ./conf/flume.conf --name agent
 ```
 
 ## References
