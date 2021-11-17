@@ -290,3 +290,6 @@ $ telnet localhost 44444
 * https://stackoverflow.com/questions/52036482/yarn-could-not-find-or-load-main-class-org-apache-hadoop-mapreduce-v2-app-mrappm
 * https://stackoverflow.com/questions/23329719/could-not-delete-files-from-dfs-as-safe-mode-is-on
 * https://flume.apache.org/FlumeUserGuide.html
+* https://oozie.apache.org/docs/5.0.0/DG_QuickStart.html
+* https://www.bizety.com/2017/06/05/open-source-data-pipeline-luigi-vs-azkaban-vs-oozie-vs-airflow/
+* https://stackoverflow.com/questions/47928995/which-one-to-choose-apache-oozie-or-apache-airflow-need-a-comparison
