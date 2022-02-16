@@ -179,6 +179,8 @@ $ hdfs namenode -format
 Start the Hadoop daemons with scrips - $HADOOP_HOME/sbin
 ```bash
 $ start-all.sh
+
+$ hdfs --daemon start datanode
 ```
 
 Verify the cluster is up.
@@ -198,6 +200,8 @@ Check Hadoop health - http://localhost:9870/dfshealth.html#tab-overview
 Check Yarn resource manager - http://localhost:8088/cluster
 
 ## Example
+
+### WordCount
 
 Assuming environment variables are set as follows:
 ```bash
@@ -232,6 +236,46 @@ $ echo $HADOOP_CLASSPATH
 ```
 
 ## Data
+
+### Apache Flume
+
+Configure example.conf - $FLUME_HOME/conf
+```bash
+# example.conf: A single-node Flume configuration
+
+# Name the components on this agent
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+# Describe/configure the source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = localhost
+a1.sources.r1.port = 44444
+
+# Describe the sink
+a1.sinks.k1.type = logger
+
+# Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+# Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+```
+
+Start the agent of Flume with scrips - $FLUME_HOME
+```bash
+$ flume-ng agent --conf conf/ --conf-file conf/flume.conf --name agent
+$ flume-ng agent --conf conf/ --conf-file conf/example.conf --name a1 -Dflume.root.logger=INFO,console
+```
+
+Test by sending messages over Telnet.
+```bash
+$ telnet localhost 44444
+```
 
 ### MapReduce
 
@@ -269,3 +313,7 @@ $ echo $HADOOP_CLASSPATH
 * https://stackoverflow.com/questions/50927577/could-not-find-or-load-main-class-org-apache-hadoop-mapreduce-v2-app-mrappmaster
 * https://stackoverflow.com/questions/52036482/yarn-could-not-find-or-load-main-class-org-apache-hadoop-mapreduce-v2-app-mrappm
 * https://stackoverflow.com/questions/23329719/could-not-delete-files-from-dfs-as-safe-mode-is-on
+* https://flume.apache.org/FlumeUserGuide.html
+* https://oozie.apache.org/docs/5.0.0/DG_QuickStart.html
+* https://www.bizety.com/2017/06/05/open-source-data-pipeline-luigi-vs-azkaban-vs-oozie-vs-airflow/
+* https://stackoverflow.com/questions/47928995/which-one-to-choose-apache-oozie-or-apache-airflow-need-a-comparison
