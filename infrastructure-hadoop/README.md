@@ -233,7 +233,7 @@ $ echo $HADOOP_CLASSPATH
 ## Data
 
 <p float="left">
-  <img src="./pix/data_etl.png" width="700" />
+  <img src="./pix/data_etl.png" width="800" />
 </p>
 
 ### Apache Flume
