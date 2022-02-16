@@ -1,27 +1,23 @@
 # Hadoop
 
-## Hadoop architecture
+## Architecture
+
+### Hadoop architecture
 
 <p float="left">
 	<img src="./pix/hadoop-architecture.png" width="700" />
 </p>
 
-## HDFS architecture
+### HDFS architecture
 
 <p float="left">
 	<img src="./pix/hdfs-architecture.png" width="700" />
 </p>
 
-## MapReduce architecture
+### MapReduce architecture
 
 <p float="left">
 	<img src="./pix/map-reduce-architecture.png" width="700" />
-</p>
-
-## MapReduce shuffle and sort
-
-<p float="left">
-	<img src="./pix/map-reduce-shuffle-and-sort.png" width="700" />
 </p>
 
 ## Installation
@@ -234,6 +230,34 @@ Get Hadoop classpath:
 $ export HADOOP_CLASSPATH=$(hadoop classpath)
 $ echo $HADOOP_CLASSPATH
 ```
+
+## Data
+
+### MapReduce
+
+<p float="left">
+  <img src="./pix/mapreduce_to_hdfs.png" width="400" />
+  <img src="./pix/mapreduce_mapper.png" width="400" />
+</p>
+
+### Sqoop
+
+<p float="left">
+  <img src="./pix/sqoop_to_hdfs.png" width="400" />
+  <img src="./pix/sqoop_mapper.png" width="400" />
+</p>
+
+### Hive
+
+<p float="left">
+  <img src="./pix/sqoop_to_hive.png" width="500" />
+</p>
+
+### Hbase
+
+<p float="left">
+  <img src="./pix/hbase_for_etl_or_as_datasource.png" width="500" />
+</p>
 
 ## References
 * https://bigtop.apache.org/index.html
