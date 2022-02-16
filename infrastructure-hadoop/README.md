@@ -279,23 +279,29 @@ $ telnet localhost 44444
   <img src="./pix/mapreduce_mapper.png" width="400" />
 </p>
 
-### via ![sqoop](https://via.placeholder.com/100/FFFF00/000000?text=Sqoop) to/from HDFS
+### via `Sqoop` to/from HDFS
 
 <p float="left">
   <img src="./pix/sqoop_to_hdfs.png" width="600" />
   <img src="./pix/sqoop_mapper.png" width="400" />
 </p>
 
-### ![hive](https://via.placeholder.com/100/FFFF00/000000?text=Hive) in HDFS
+### `Hive` in HDFS
 
 <p float="left">
   <img src="./pix/sqoop_to_hive.png" width="700" />
 </p>
 
-### from ![hbase](https://via.placeholder.com/100/FFFF00/000000?text=HBase) to HDFS
+### from `HBase` to HDFS
 
 <p float="left">
   <img src="./pix/hbase_for_etl_or_as_datasource.png" width="550" />
+</p>
+
+<p float="left">
+  <img src="https://via.placeholder.com/100/FFFF00/000000?text=HBase" />
+  <img src="https://via.placeholder.com/100/FFFF00/000000?text=Hive" />
+  <img src="https://via.placeholder.com/100/FFFF00/000000?text=Sqoop" />
 </p>
 
 ## References
