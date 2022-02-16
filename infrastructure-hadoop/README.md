@@ -2,22 +2,17 @@
 
 ## Architecture
 
-### Hadoop architecture
+### Hadoop
 
 <p float="left">
 	<img src="./pix/hadoop-architecture.png" width="700" />
 </p>
 
-### HDFS architecture
+### HDFS + MapReduce
 
 <p float="left">
-	<img src="./pix/hdfs-architecture.png" width="700" />
-</p>
-
-### MapReduce architecture
-
-<p float="left">
-	<img src="./pix/map-reduce-architecture.png" width="700" />
+	<img src="./pix/hdfs-architecture.png" width="500" />
+  <img src="./pix/map-reduce-architecture.png" width="500" />
 </p>
 
 ## Installation
@@ -300,7 +295,7 @@ $ telnet localhost 44444
 ### Hbase
 
 <p float="left">
-  <img src="./pix/hbase_for_etl_or_as_datasource.png" width="700" />
+  <img src="./pix/hbase_for_etl_or_as_datasource.png" width="600" />
 </p>
 
 ## References
