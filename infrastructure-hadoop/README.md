@@ -292,7 +292,7 @@ $ telnet localhost 44444
   <img src="./pix/sqoop_to_hive.png" width="700" />
 </p>
 
-### from `HBase` to HDFS
+### from/to `HBase` to/from HDFS | `HBase` for MapReduce
 
 <p float="left">
   <img src="./pix/hbase_for_etl_or_as_datasource.png" width="550" />
