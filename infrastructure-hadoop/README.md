@@ -272,30 +272,36 @@ Test by sending messages over Telnet.
 $ telnet localhost 44444
 ```
 
-### MapReduce
+### via MapReduce to HDFS
 
 <p float="left">
   <img src="./pix/mapreduce_to_hdfs.png" width="600" />
   <img src="./pix/mapreduce_mapper.png" width="400" />
 </p>
 
-### Sqoop
+### via `Sqoop` to/from HDFS
 
 <p float="left">
   <img src="./pix/sqoop_to_hdfs.png" width="600" />
   <img src="./pix/sqoop_mapper.png" width="400" />
 </p>
 
-### Hive
+### `Hive` in HDFS
 
 <p float="left">
   <img src="./pix/sqoop_to_hive.png" width="700" />
 </p>
 
-### Hbase
+### from/to `HBase` to/from HDFS | `HBase` for MapReduce
 
 <p float="left">
   <img src="./pix/hbase_for_etl_or_as_datasource.png" width="550" />
+</p>
+
+<p float="left">
+  <img src="https://via.placeholder.com/100/FFFF00/000000?text=HBase" />
+  <img src="https://via.placeholder.com/100/FFFF00/000000?text=Hive" />
+  <img src="https://via.placeholder.com/100/FFFF00/000000?text=Sqoop" />
 </p>
 
 ## References
