@@ -295,7 +295,7 @@ $ telnet localhost 44444
 ### Hbase
 
 <p float="left">
-  <img src="./pix/hbase_for_etl_or_as_datasource.png" width="600" />
+  <img src="./pix/hbase_for_etl_or_as_datasource.png" width="550" />
 </p>
 
 ## References
