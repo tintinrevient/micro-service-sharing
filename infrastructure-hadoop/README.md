@@ -232,6 +232,10 @@ $ echo $HADOOP_CLASSPATH
 
 ## Data
 
+<p float="left">
+  <img src="./pix/data_etl.png" width="700" />
+</p>
+
 ### Apache Flume
 
 Configure example.conf - $FLUME_HOME/conf
@@ -296,12 +300,6 @@ $ telnet localhost 44444
 
 <p float="left">
   <img src="./pix/hbase_for_etl_or_as_datasource.png" width="550" />
-</p>
-
-<p float="left">
-  <img src="https://via.placeholder.com/100/FFFF00/000000?text=HBase" />
-  <img src="https://via.placeholder.com/100/FFFF00/000000?text=Hive" />
-  <img src="https://via.placeholder.com/100/FFFF00/000000?text=Sqoop" />
 </p>
 
 ## References
