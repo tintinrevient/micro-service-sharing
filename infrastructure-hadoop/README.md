@@ -234,7 +234,7 @@ $ echo $HADOOP_CLASSPATH
 
 <p float="left">
   <img src="./pix/data_etl.png" width="650" />
-  <img src="./pix/hive.png" width="450" />
+  <img src="./pix/hive.png" width="350" />
 </p>
 
 * Hive communicates with the `JobTracker` to initiate the `MapReduce` job.
