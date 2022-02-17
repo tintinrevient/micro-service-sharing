@@ -233,8 +233,12 @@ $ echo $HADOOP_CLASSPATH
 ## Data
 
 <p float="left">
-  <img src="./pix/data_etl.png" width="650" />
+  <img src="./pix/data_etl.png" width="700" />
+</p>
+
+<p float="left">
   <img src="./pix/hive.png" width="350" />
+  <img src="./pix/hbase_for_etl_or_as_datasource.png" width="450" />
 </p>
 
 * Hive communicates with the `JobTracker` to initiate the `MapReduce` job.
@@ -293,18 +297,6 @@ $ telnet localhost 44444
 <p float="left">
   <img src="./pix/sqoop_to_hdfs.png" width="600" />
   <img src="./pix/sqoop_mapper.png" width="400" />
-</p>
-
-### `Hive` in HDFS
-
-<p float="left">
-  <img src="./pix/sqoop_to_hive.png" width="700" />
-</p>
-
-### from/to `HBase` to/from HDFS | `HBase` for MapReduce
-
-<p float="left">
-  <img src="./pix/hbase_for_etl_or_as_datasource.png" width="550" />
 </p>
 
 ## References
