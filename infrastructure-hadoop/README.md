@@ -244,6 +244,8 @@ $ echo $HADOOP_CLASSPATH
 * Hive communicates with the `JobTracker` to initiate the `MapReduce` job.
 * The data files to be processed are in `HDFS`, which are managed by the `NameNode`.
 * `Metastore` is usually MySQL, where Hive persists table schemas.
+* Hive is for `data warehouse` applications, i.e., OLAP, where 1) fast response times are not required; 2) the data is large and not changing rapidly.
+* HBase can be used as a `key-value store`, i.e., OLTP, where 1) fast queries and updates are needed; 2) a configurable number of versions of each column’s values are marked by timestamp.
 
 ### Apache Flume
 
