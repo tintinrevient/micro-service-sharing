@@ -233,8 +233,13 @@ $ echo $HADOOP_CLASSPATH
 ## Data
 
 <p float="left">
-  <img src="./pix/data_etl.png" width="800" />
+  <img src="./pix/data_etl.png" width="650" />
+  <img src="./pix/hive.png" width="450" />
 </p>
+
+* Hive communicates with the `JobTracker` to initiate the `MapReduce` job.
+* The data files to be processed are in `HDFS`, which are managed by the `NameNode`.
+* `Metastore` is usually MySQL, where Hive persists table schemas.
 
 ### Apache Flume
 
